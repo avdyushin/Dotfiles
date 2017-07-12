@@ -26,7 +26,7 @@ set listchars=tab:>-,trail:·,extends:\#,nbsp:·
 set wrap
 set linebreak
 set nolist
-set textwidth=79
+" set textwidth=79
 
 set t_Co=256
 colorscheme mustang2
@@ -52,9 +52,24 @@ set incsearch
 set hlsearch
 set is
 
+" Git branch name
+function! GitBranch()
+  let branch = systemlist("git symbolic-ref --short HEAD 2>/dev/null")[0]
+  if empty(branch)
+    return ''
+  else
+    return ' ' . branch . ''
+  endif
+endfunction
+
 " Status line
 set laststatus=2
-set statusline=%f%m\ %=%c,%l/%L\ %4p%%
+set statusline=
+set statusline+=%f%m\ %=
+set statusline+=%#User1#
+set statusline+=%{GitBranch()}\ 
+set statusline+=%*
+set statusline+=%c,%l/%L\ %4p%%
 
 " Menus
 set wildmenu

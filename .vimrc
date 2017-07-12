@@ -54,10 +54,11 @@ set is
 
 " Git branch name
 function! GitBranch()
-  let branch = systemlist("git symbolic-ref --short HEAD 2>/dev/null")[0]
+  let branch = system("git symbolic-ref --short HEAD 2>/dev/null")
   if empty(branch)
     return ''
   else
+    let branch = substitute(branch, '\n\+$', '', '')
     return ' ' . branch . ''
   endif
 endfunction

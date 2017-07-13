@@ -33,6 +33,7 @@ colorscheme mustang2
 filetype plugin on
 filetype indent on
 syntax on
+set omnifunc=syntaxcomplete#Complete
 
 set cul "Highlight current line
 
@@ -52,6 +53,16 @@ set incsearch
 set hlsearch
 set ignorecase
 set smartcase
+
+" Smart tab for completion
+function! SmartTab()
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<Tab>"
+  else
+    return "\<C-p>"
+  endif
+endfunction
 
 " Git branch name
 function! GitBranch()
@@ -91,6 +102,9 @@ menu Run.Python :!python %<Enter>
 set langmap=ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
 
 let mapleader = ","
+
+inoremap <Tab> <C-r>=SmartTab()<Enter>
+inoremap <S-Tab> <C-n>
 
 nnoremap B ^
 nnoremap E $

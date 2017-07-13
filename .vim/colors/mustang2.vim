@@ -26,7 +26,8 @@ hi NonText      guifg=#E6E1CF guibg=#0F1419 gui=none ctermfg=244 ctermbg=235
 hi LineNr       guifg=#2D3640 guibg=NONE    gui=none ctermfg=238 ctermbg=none cterm=none
 
 " Status line
-hi User1        guifg=#FFFFFF guibg=#14191F gui=none ctermfg=255 ctermbg=233 cterm=none
+hi User1        guifg=#36A3D9 guibg=#14191F gui=none ctermfg=38 ctermbg=233 cterm=none
+hi User2        guifg=#FF7733 guibg=#14191F gui=none ctermfg=202 ctermbg=233 cterm=none
 hi StatusLine   guifg=#E6E1CF guibg=#14191F gui=none ctermfg=230 ctermbg=233 cterm=none
 hi StatusLineNC guifg=#939395 guibg=#444444 gui=none ctermfg=246 ctermbg=238
 

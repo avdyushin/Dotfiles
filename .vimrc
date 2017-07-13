@@ -24,8 +24,9 @@ set list
 set listchars=tab:>-,trail:·,extends:\#,nbsp:·
 
 set nowrap
-set linebreak
+set nolinebreak
 set nolist
+set formatoptions-=t
 " set textwidth=79
 
 set t_Co=256
@@ -65,24 +66,43 @@ function! SmartTab()
 endfunction
 
 " Git branch name
-function! GitBranch()
-  let branch = system("git symbolic-ref --short HEAD 2>/dev/null")
+function! GitBranchName()
+  let command = "cd " . expand('%:p:h') . " && git symbolic-ref --short HEAD 2>/dev/null"
+  let branch = system(command)
   if empty(branch)
-    return ''
+    let g:git_branch_name = ''
   else
     let branch = substitute(branch, '\n\+$', '', '')
-    return ' ' . branch . ''
+    let g:git_branch_name = ' ' . branch . ''
   endif
 endfunction
+
+function! GitFileStatus()
+  let file = expand('%:t')
+  let command = "cd " . expand('%:p:h') . " && git status --short | grep " . file
+  let modifier = substitute(system(command), '^\s*\(.\{-}\)\ ' . file . '\n\+$', '\1', '')
+  if empty(modifier)
+    let g:git_file_status = ''
+  else
+    let g:git_file_status = modifier
+  endif
+endfunction
+
+au BufWritePost * call GitBranchName()
+au BufWritePost * call GitFileStatus()
 
 " Status line
 set laststatus=2
 set statusline=
-set statusline+=%f%m\ %=
+set statusline+=%f%m\ 
+set statusline+=%#User2#
+set statusline+=%{g:git_file_status}\ 
+set statusline+=%=
 set statusline+=%#User1#
-set statusline+=%{GitBranch()}\ 
+set statusline+=%{g:git_branch_name}\ 
 set statusline+=%*
-set statusline+=%c,%l/%L\ %4p%%
+set statusline+=%2B\ 
+set statusline+=%c/%L\ %p%%
 
 " Menus
 set wildmenu
@@ -103,6 +123,7 @@ set langmap=ёйцукенгшщзхъфывапролджэячсмитьбюЁ
 
 let mapleader = ","
 
+nnoremap <Tab> w
 inoremap <Tab> <C-r>=SmartTab()<Enter>
 inoremap <S-Tab> <C-n>
 

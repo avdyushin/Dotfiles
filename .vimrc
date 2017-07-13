@@ -23,7 +23,7 @@ set expandtab
 set list
 set listchars=tab:>-,trail:·,extends:\#,nbsp:·
 
-set wrap
+set nowrap
 set linebreak
 set nolist
 " set textwidth=79
@@ -50,7 +50,8 @@ set sidescroll=1
 " Search
 set incsearch
 set hlsearch
-set is
+set ignorecase
+set smartcase
 
 " Git branch name
 function! GitBranch()

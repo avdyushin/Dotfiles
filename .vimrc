@@ -65,31 +65,11 @@ function! SmartTab()
   endif
 endfunction
 
-" Git branch name
-function! GitBranchName()
-  let command = "cd " . expand('%:p:h') . " && git symbolic-ref --short HEAD 2>/dev/null"
-  let branch = system(command)
-  if empty(branch)
-    let g:git_branch_name = ''
-  else
-    let branch = substitute(branch, '\n\+$', '', '')
-    let g:git_branch_name = ' ' . branch . ''
-  endif
-endfunction
+au BufWritePost * call git#branch_name()
+au BufWritePost * call git#file_status()
 
-function! GitFileStatus()
-  let file = expand('%:t')
-  let command = "cd " . expand('%:p:h') . " && git status --short | grep " . file
-  let modifier = substitute(system(command), '^\s*\(.\{-}\)\ ' . file . '\n\+$', '\1', '')
-  if empty(modifier)
-    let g:git_file_status = ''
-  else
-    let g:git_file_status = modifier
-  endif
-endfunction
-
-au BufWritePost * call GitBranchName()
-au BufWritePost * call GitFileStatus()
+call git#branch_name()
+call git#file_status()
 
 " Status line
 set laststatus=2

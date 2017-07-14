@@ -30,7 +30,7 @@ set formatoptions-=t
 " set textwidth=79
 
 set t_Co=256
-colorscheme mustang2
+colorscheme ayu2
 filetype plugin on
 filetype indent on
 syntax on
@@ -41,7 +41,7 @@ set cul "Highlight current line
 " GUI only
 if has("gui_running")
   set guifont=Input\ Mono\ Narrow:h13
-  set transparency=8 "Make transparent window
+  set transparency=5 "Make transparent window
 endif
 
 " Scrolling
@@ -104,6 +104,7 @@ set langmap=ёйцукенгшщзхъфывапролджэячсмитьбюЁ
 let mapleader = ","
 
 nnoremap <Tab> w
+nnoremap <S-Tab> <C-w>w
 inoremap <Tab> <C-r>=SmartTab()<Enter>
 inoremap <S-Tab> <C-n>
 

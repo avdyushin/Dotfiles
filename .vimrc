@@ -42,6 +42,8 @@ set cul "Highlight current line
 if has("gui_running")
   set guifont=Input\ Mono\ Narrow:h13
   set transparency=5 "Make transparent window
+  set lines=43
+  set columns=100
 endif
 
 " Scrolling

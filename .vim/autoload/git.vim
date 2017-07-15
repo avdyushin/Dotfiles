@@ -13,7 +13,7 @@ endfunction
 " Git file status
 function! git#file_status()
   let file = expand('%:t')
-  let command = "cd " . expand('%:p:h') . " && git status --short | grep " . file
+  let command = "cd " . expand('%:p:h') . " && git status --short 2>/dev/null | grep " . file
   let modifier = substitute(system(command), '^\s*\(.\{-}\)\ ' . file . '\n\+$', '\1', '')
   if empty(modifier)
     let g:git_file_status = ''

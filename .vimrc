@@ -22,12 +22,16 @@ set expandtab
 " Show tabs, trail and non-break spaces
 set list
 set listchars=tab:>-,trail:·,extends:\#,nbsp:·
+set fillchars=fold:—,vert:·
 
 set nowrap
 set nolinebreak
 set nolist
 set formatoptions-=t
-" set textwidth=79
+let &colorcolumn="80,".join(range(120,999),",")
+set foldmethod=indent
+
+au BufEnter * normal zR
 
 set t_Co=256
 colorscheme ayu2
@@ -42,8 +46,8 @@ set cul "Highlight current line
 if has("gui_running")
   set guifont=Input\ Mono\ Narrow:h13
   set transparency=5 "Make transparent window
-  set lines=43
-  set columns=100
+"  set lines=43
+"  set columns=100
 endif
 
 " Scrolling
@@ -67,8 +71,8 @@ function! SmartTab()
   endif
 endfunction
 
-au BufWritePost * call git#branch_name()
-au BufWritePost * call git#file_status()
+au BufWritePost,FileWritePost * call git#branch_name()
+au BufWritePost,FileWritePost * call git#file_status()
 
 call git#branch_name()
 call git#file_status()
@@ -100,7 +104,6 @@ menu Run.Ruby :!ruby %<Enter>
 menu Run.Python :!python %<Enter>
 
 " Mapping
-"
 set langmap=ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
 
 let mapleader = ","

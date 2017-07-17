@@ -45,12 +45,12 @@ $ mvim -p file1.txt file2.txt
 $ mvim --remote-tab svm_author_id.py
 ```
 
-## Spell
+### Spell
 ```sh
 z=      : Shows suggestions for replace
 ```
 
-## Navigation
+### Navigation
 ```sh
 42G     : Goto line
 
@@ -65,7 +65,7 @@ zt   : Scroll current line to top
 zb   : Scroll currnet lint to bottom
 ```
 
-## Editing
+### Editing
 ```sh
 C-A  : Increment number under cursor
 
@@ -82,7 +82,7 @@ J    : Join two lines
 gg=G : Indent all file
 ```
 
-## Changing case
+### Changing case
 ```sh
 ~    : Changes the case of current character
 
@@ -101,7 +101,7 @@ gUaw : Change all of current WORD to upper.
 g~~  : Invert case to entire line
 ```
 
-## Moving over windows
+### Moving over windows
 Once you have multiple windows open, there are many window commands available all starting with the <C-w> key:
 ```
 <C-w>n - :new horizontal split (editing a new empty buffer)

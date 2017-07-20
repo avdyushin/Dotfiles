@@ -7,12 +7,12 @@ endif
 let colors_name = "ayu2"
 
 hi Normal       guifg=#E6E1CF guibg=#0F1419 gui=none ctermfg=230  ctermbg=none cterm=none
-hi NonText      guifg=#A6A1AF guibg=#0F1419 gui=none ctermfg=244  ctermbg=235 cterm=none
-hi CursorColumn guifg=NONE    guibg=#151A1E gui=none ctermfg=none ctermbg=234 cterm=none
-hi CursorLine   guifg=NONE    guibg=#151A1E gui=none ctermfg=none ctermbg=234 cterm=none
-hi CursorLineNr guifg=#F29718 guibg=#151A1E gui=none ctermfg=none ctermbg=234 cterm=none
+hi NonText      guifg=#A6A1AF guibg=#0F1419 gui=none ctermfg=244  ctermbg=235  cterm=none
+hi CursorColumn guifg=NONE    guibg=#151A1E gui=none ctermfg=none ctermbg=234  cterm=none
+hi CursorLine   guifg=NONE    guibg=#151A1E gui=none ctermfg=none ctermbg=234  cterm=none
+hi CursorLineNr guifg=#F29718 guibg=#151A1E gui=none ctermfg=none ctermbg=234  cterm=none
 hi LineNr       guifg=#3D3A44 guibg=NONE    gui=none ctermfg=238
-hi ColorColumn  guifg=NONE    guibg=#151A1E gui=none ctermfg=0    ctermbg=none cterm=none
+hi ColorColumn  guifg=NONE    guibg=#151A1E gui=none ctermfg=none ctermbg=none cterm=none
 
 hi Comment      guifg=#5C6773 guibg=NONE    gui=none ctermfg=244
 hi Constant     guifg=#FFEE99 guibg=NONE    gui=none ctermfg=221
@@ -52,6 +52,6 @@ hi TabLine      ctermfg=248 ctermbg=232 cterm=none
 
 hi User1        guifg=#36A3D9 guibg=#14191F gui=none ctermfg=38   ctermbg=232  cterm=none
 hi User2        guifg=#FF7733 guibg=#14191F gui=none ctermfg=202  ctermbg=232  cterm=none
-hi OverLength   guifg=#F07178 guibg=NONE    gui=none ctermfg=211  ctermbg=0    cterm=none
+hi OverLength   guifg=#F07178 guibg=NONE    gui=none ctermfg=211  ctermbg=none cterm=none
 
 match OverLength /\%>80v.\+/

@@ -4,6 +4,10 @@ task :update do
   create_symlinks
 end
 
+task :symlinks do
+  create_symlinks
+end
+
 task default: 'update'
 
 def all_files

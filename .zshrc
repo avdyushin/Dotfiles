@@ -53,9 +53,6 @@ function ios_simulator() {
   echo $path
 }
 
-export HISTSIZE=1000
-export SAVEHIST=1000
-export HISTFILE=~/.zhistory
 setopt inc_append_history
 
 autoload -U colors && colors
@@ -71,6 +68,8 @@ bindkey -v
 
 bindkey '^r' history-incremental-search-backward
 bindkey -M vicmd v edit-command-line
+bindkey '^A' vi-beginning-of-line
+bindkey '^E' vi-end-of-line
 
 function zle-line-init zle-keymap-select {
   VIM_MODE='%{$fg_bold[magenta]%}[% NORMAL]% %{$reset_color%}'
@@ -80,10 +79,10 @@ function zle-line-init zle-keymap-select {
 
 zle -N zle-line-init
 zle -N zle-keymap-select
-export KEYTIMEOUT=1
 
 # case insensitive completion for cd etc *N*
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+#zstyle ':completion:*' menu select
 
 unsetopt promptcr
 PROMPT=$'%{$fg_bold[blue]%}%n%{$reset_color%} $TOON %{$fg_bold[yellow]%}%m%{$reset_color%} %{$fg_bold[green]%}%~%{$reset_color%}$(git_prompt_info)\n ➜ '
@@ -91,15 +90,8 @@ PROMPT=$'%{$fg_bold[blue]%}%n%{$reset_color%} $TOON %{$fg_bold[yellow]%}%m%{$res
 # Update window title
 precmd () { print -Pn "\e]2;%~\a" }
 
-alias ls="ls -G"
-alias ll="ls -Gla"
-alias l="ls -Gla"
-alias bc="bc -lq"
-alias -g ND='*(/om[1])' # newest directory
-alias -g NF='*(.om[1])' # newest file
-alias -g ...="../.."
-
 hash -d simulator="$(ios_simulator)"
 
-export PATH="$HOME/.fastlane/bin:$HOME/scala/bin:$PATH"
-export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+source $HOME/.zsh/.zenv
+source $HOME/.zsh/.zalias
+

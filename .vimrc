@@ -28,32 +28,32 @@ set nowrap
 set nolinebreak
 set nolist
 set formatoptions-=t
-let &colorcolumn="80,".join(range(120,999),",")
+" let &colorcolumn="80,".join(range(120,999),",")
+let &colorcolumn=join(range(120,999),",")
 set foldmethod=indent
 
-au BufEnter * normal zR
-
-set t_Co=256
-colorscheme ayu2
 filetype plugin on
 filetype indent on
 syntax on
-set omnifunc=syntaxcomplete#Complete
+colorscheme ayu2
 
-set cul "Highlight current line
+set t_Co=256
+set t_ZH=[3m
+set t_ZR=[23m
+set omnifunc=syntaxcomplete#Complete
 
 " GUI only
 if has("gui_running")
-  set guifont=Input\ Mono\ Narrow:h13
-  set transparency=5 "Make transparent window
-"  set lines=43
-"  set columns=100
+  set guifont=InputMono\ ExLight:h13
+  set transparency=3 "Make transparent window
 endif
 
 " Scrolling
 set scrolloff=10
 set sidescrolloff=15
 set sidescroll=1
+
+set cursorline "Highlight current line
 
 " Search
 set incsearch
@@ -73,21 +73,23 @@ endfunction
 
 au BufWritePost,FileWritePost * call git#branch_name()
 au BufWritePost,FileWritePost * call git#file_status()
+au BufEnter * normal zR
 
 call git#branch_name()
 call git#file_status()
 
 " Status line
 set laststatus=2
+
 set statusline=
-set statusline+=%f%m\ 
-set statusline+=%#User2#
-set statusline+=%{g:git_file_status}\ 
-set statusline+=%=
+set statusline+=%f%m
+set statusline+=\ %#User2#
+set statusline+=%{g:git_file_status}
+set statusline+=\ %=
 set statusline+=%#User1#
-set statusline+=%{g:git_branch_name}\ 
-set statusline+=%*
-set statusline+=%2B\ 
+set statusline+=%{g:git_branch_name}
+set statusline+=\ %*
+" set statusline+=%2B
 set statusline+=%c/%L\ %p%%
 
 " Menus

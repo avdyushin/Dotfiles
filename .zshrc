@@ -2,12 +2,19 @@ source $HOME/.zsh/.zfunctions
 source $HOME/.zsh/.zenv
 source $HOME/.zsh/.zalias
 
-setopt inc_append_history
-
 autoload -U colors && colors
+autoload -U compinit && compinit
+
 setopt prompt_subst
-autoload -U compinit
-compinit
+
+setopt autocd
+
+setopt inc_append_history
+setopt share_history
+
+setopt correct
+
+setopt brace_ccl
 
 # Vim mode
 autoload -U edit-command-line

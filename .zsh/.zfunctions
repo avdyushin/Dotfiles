@@ -1,0 +1,37 @@
+function git_branch() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  echo ${ref#refs/heads/}
+}
+
+function git_status() {
+  gitstat=$(git status 2>/dev/null | grep '\(Untracked\|Changes\)')
+
+  if [[ $(echo ${gitstat} | grep -c "^Changes to be committed:") > 0 ]]; then
+    echo -n "%{$fg_bold[green]%}A%{$reset_color%}" 
+  fi
+
+  if [[ $(echo ${gitstat} | grep -c "^Changes not staged for commit:") > 0 ]]; then
+    echo -n "%{$fg_bold[red]%}M%{$reset_color%}"
+  fi
+
+  if [[ $(echo ${gitstat} | grep -c "^Untracked files:") > 0 ]]; then
+    echo -n "%{$fg_bold[red]%}?%{$reset_color%}"
+  fi
+
+  if [[ $(echo ${gitstat} | wc -l | tr -d ' ') == 0 ]]; then
+    echo -n ""
+  fi
+}
+
+function git_prompt() {
+  branch="$(git_branch)" || return
+  color_branch="%{$fg_bold[magenta]%} ${branch}%{$reset_color%}"
+  echo "${color_branch} $(git_status)"
+}
+
+function base_prompt() {
+  color_user="%{$fg_bold[blue]%}%n%{$reset_color%}"
+  color_host="%{$fg_bold[yellow]%}%m%{$reset_color%}"
+  color_path="%{$fg_bold[green]%}%~%{$reset_color%}"
+  echo "${color_user}  ${color_host} ${color_path}"
+}

@@ -5,6 +5,9 @@ source $HOME/.zsh/.zalias
 autoload -U colors && colors
 autoload -U compinit && compinit
 
+autoload -U edit-command-line
+zle -N edit-command-line
+
 setopt prompt_subst
 
 setopt autocd
@@ -16,11 +19,7 @@ setopt correct
 
 setopt brace_ccl
 
-# Vim mode
-autoload -U edit-command-line
-zle -N edit-command-line
-
-bindkey -v
+bindke -v
 
 bindkey -M vicmd v edit-command-line
 bindkey '^r' history-incremental-search-backward
@@ -28,7 +27,7 @@ bindkey '^A' vi-beginning-of-line
 bindkey '^E' vi-end-of-line
 
 function zle-line-init zle-keymap-select {
-  VIM_MODE='%{$fg_bold[magenta]%}[% NORMAL]% %{$reset_color%}'
+  VIM_MODE='%F{237}[% NORMAL]% %f'
   RPS1="${${KEYMAP/vicmd/$VIM_MODE}/(main|viins)/}"
   zle reset-prompt
 }
@@ -46,5 +45,5 @@ precmd () {
   print -Pn "\e]2;%~\a" 
 }
 
-PROMPT=$'$(base_prompt) $(git_prompt)\n ➜ '
+PROMPT=$'$(base_prompt) $(git_prompt)\n ❯ '
 

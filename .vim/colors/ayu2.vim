@@ -39,7 +39,7 @@ hi PmenuSel     guifg=#000000 guibg=#B8CC52 gui=none ctermfg=0    ctermbg=148
 hi Search       guifg=#0F1419 guibg=#B8CC52 gui=none ctermfg=0    ctermbg=148
 hi StatusLine   guifg=#E6E1CF guibg=#14191F gui=none ctermfg=230  ctermbg=232  cterm=none
 hi StatusLineNC guifg=#3D3A44 guibg=#14191F gui=none ctermfg=246  ctermbg=232  cterm=none
-hi VertSplit    guifg=NONE    guibg=NONE    gui=none ctermfg=238  ctermbg=238
+hi VertSplit    guifg=#3D3A44 guibg=NONE    gui=none ctermfg=238  ctermbg=none cterm=none
 
 hi Folded       guifg=#585058 guibg=#151A1E gui=none ctermfg=248  ctermbg=4
 hi Title        guifg=#f6f3e8 guibg=NONE    gui=bold ctermfg=254  ctermbg=none cterm=bold

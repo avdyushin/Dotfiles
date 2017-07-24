@@ -21,8 +21,8 @@ set expandtab
 
 " Show tabs, trail and non-break spaces
 set list
-set listchars=tab:>-,trail:·,extends:\#,nbsp:·
-set fillchars=fold:—,vert:·
+set listchars=tab:>-,trail:·,precedes:←,extends:→,nbsp:·
+set fillchars=fold:—,vert:│
 
 set nowrap
 set nolinebreak

@@ -40,6 +40,9 @@ zle -N zle-keymap-select
 
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
+zstyle ':completion:*:*:kill:*:processes' command 'ps -e -o pid,user,args'
+zstyle ':completion:*:*:*:*:processes' list-colors "=(#b) #([0-9]#)*=0=${color[yellow]}"
+
 precmd () {
   print -Pn "\e]2;%~\a"
 

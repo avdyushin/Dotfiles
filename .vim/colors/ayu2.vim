@@ -30,7 +30,7 @@ hi Undefined    guifg=#36A3D9 guibg=NONE    gui=none ctermfg=208
 hi Todo         guifg=#F07178 guibg=NONE    gui=none ctermfg=211  ctermbg=0    cterm=none
 
 " Matched parent color
-hi MatchParen   guifg=#0F1419 guibg=#E6E1CF gui=bold ctermfg=157  ctermbg=237  cterm=bold
+hi MatchParen   guifg=#0F1419 guibg=#B6B1BF gui=italic ctermfg=157  ctermbg=237  cterm=bold
 
 " Completion menu
 hi Pmenu        guifg=#ffffff guibg=#444444 gui=none ctermfg=255  ctermbg=238

@@ -27,11 +27,11 @@ function normal-mode() { echo "-- NORMAL --" }
 
 zle-line-init zle-keymap-select() {
   case $KEYMAP in
-    vicmd)      VIMODE="$(normal-mode)" ;;
-    viins|main) VIMODE="$(insert-mode)" ;;
-    *)          VIMODE="$(insert-mode)" ;;
+    vicmd)      vi_mode="$(normal-mode)" ;;
+    viins|main) vi_mode="$(insert-mode)" ;;
+    *)          vi_mode="$(insert-mode)" ;;
   esac
-  RPS1=$'$VIMODE'
+  RPS1=$'$vi_mode'
   zle reset-prompt
 }
 
@@ -44,5 +44,6 @@ precmd () {
   print -Pn "\e]2;%~\a"
 
   RPS1="$(insert-mode)"
-  PROMPT=$'$(base_prompt) $(git_prompt)\n ❯ '
+  PROMPT=$'$(base-prompt) $(git-prompt)\n ❯ '
 }
+

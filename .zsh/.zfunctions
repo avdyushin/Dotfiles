@@ -7,19 +7,23 @@ function git_status() {
   gitstat=$(git status 2>/dev/null | grep '\(Untracked\|Changes\)')
   dirty='＊'
   if [[ $(echo ${gitstat} | grep -c "^Changes to be committed:") > 0 ]]; then
-    echo -n "${dirty}" 
+    echo -n "${dirty}"
+    return
   fi
 
   if [[ $(echo ${gitstat} | grep -c "^Changes not staged for commit:") > 0 ]]; then
-    echo -n "${dirty}" 
+    echo -n "${dirty}"
+    return
   fi
 
   if [[ $(echo ${gitstat} | grep -c "^Untracked files:") > 0 ]]; then
-    echo -n "${dirty}" 
+    echo -n "${dirty}"
+    return
   fi
 
   if [[ $(echo ${gitstat} | wc -l | tr -d ' ') == 0 ]]; then
-    echo -n "${dirty}" 
+    echo -n "${dirty}"
+    return
   fi
 }
 

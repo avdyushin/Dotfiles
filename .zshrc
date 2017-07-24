@@ -1,4 +1,5 @@
 source $HOME/.zsh/.zfunctions
+source $HOME/.zsh/.zbindkey
 source $HOME/.zsh/.zenv
 source $HOME/.zsh/.zalias
 
@@ -19,31 +20,29 @@ setopt correct
 
 setopt brace_ccl
 
-bindke -v
+unsetopt promptcr
 
-bindkey -M vicmd v edit-command-line
-bindkey '^r' history-incremental-search-backward
-bindkey '^A' vi-beginning-of-line
-bindkey '^E' vi-end-of-line
+function insert-mode() { echo "" }
+function normal-mode() { echo "-- NORMAL --" }
 
-function zle-line-init zle-keymap-select {
-  VIM_MODE='%F{237}[% NORMAL]% %f'
-  RPS1="${${KEYMAP/vicmd/$VIM_MODE}/(main|viins)/}"
+zle-line-init zle-keymap-select() {
+  case $KEYMAP in
+    vicmd)      VIMODE="$(normal-mode)" ;;
+    viins|main) VIMODE="$(insert-mode)" ;;
+    *)          VIMODE="$(insert-mode)" ;;
+  esac
+  RPS1=$'$VIMODE'
   zle reset-prompt
 }
 
 zle -N zle-line-init
 zle -N zle-keymap-select
 
-# case insensitive completion for cd etc *N*
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-#zstyle ':completion:*' menu select
 
-unsetopt promptcr
+precmd () {
+  print -Pn "\e]2;%~\a"
 
-precmd () { 
-  print -Pn "\e]2;%~\a" 
+  RPS1="$(insert-mode)"
+  PROMPT=$'$(base_prompt) $(git_prompt)\n ❯ '
 }
-
-PROMPT=$'$(base_prompt) $(git_prompt)\n ❯ '
-

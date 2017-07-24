@@ -26,7 +26,6 @@ set fillchars=fold:—,vert:·
 
 set nowrap
 set nolinebreak
-set nolist
 set formatoptions-=t
 " let &colorcolumn="80,".join(range(120,999),",")
 let &colorcolumn=join(range(120,999),",")

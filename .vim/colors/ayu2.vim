@@ -44,7 +44,7 @@ hi VertSplit    guifg=NONE    guibg=NONE    gui=none ctermfg=238  ctermbg=238
 hi Folded       guifg=#585058 guibg=#151A1E gui=none ctermfg=248  ctermbg=4
 hi Title        guifg=#f6f3e8 guibg=NONE    gui=bold ctermfg=254  ctermbg=none cterm=bold
 hi Visual       guifg=NONE    guibg=#253340 gui=none ctermfg=254  ctermbg=4
-hi SpecialKey   guifg=#808080 guibg=#343434 gui=none ctermfg=244  ctermbg=236
+hi SpecialKey   guifg=#A6A1AF guibg=#0F1419 gui=none ctermfg=244  ctermbg=none cterm=none
 
 hi TabLineSel   ctermfg=148 ctermbg=232 cterm=none
 hi TabLineFill  ctermfg=0   ctermbg=232 cterm=none

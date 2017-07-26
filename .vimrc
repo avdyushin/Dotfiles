@@ -39,6 +39,8 @@ colorscheme ayu2
 set t_Co=256
 set t_ZH=[3m
 set t_ZR=[23m
+let &t_SI="\033[3 q" " start insert mode, blinking underline cursor
+let &t_EI="\033[1 q" " end insert mode, blinking block
 set omnifunc=syntaxcomplete#Complete
 
 " GUI only

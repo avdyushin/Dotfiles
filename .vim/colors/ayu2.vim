@@ -14,7 +14,7 @@ hi CursorLineNr guifg=#F29718 guibg=#151A1E gui=none ctermfg=none ctermbg=234  c
 hi LineNr       guifg=#3D3A44 guibg=NONE    gui=none ctermfg=238
 hi ColorColumn  guifg=NONE    guibg=#151A1E gui=none ctermfg=none ctermbg=none cterm=none
 
-hi Comment      guifg=#5C6773 guibg=NONE    gui=none ctermfg=244
+hi Comment      guifg=#5C6773 guibg=NONE    gui=italic ctermfg=244 cterm=italic
 hi Constant     guifg=#FFEE99 guibg=NONE    gui=none ctermfg=221
 hi String       guifg=#B8CC52 guibg=NONE    gui=none ctermfg=148
 hi Identifier   guifg=#36A3D9 guibg=NONE    gui=none ctermfg=148

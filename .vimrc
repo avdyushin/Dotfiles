@@ -36,26 +36,31 @@ filetype indent on
 syntax on
 colorscheme ayu2
 
+" Set 256 colors
 set t_Co=256
+" Setup italic in terminal
 set t_ZH=[3m
 set t_ZR=[23m
+" Setup cursor change on insert mode
 let &t_SI="\033[3 q" " start insert mode, blinking underline cursor
 let &t_EI="\033[1 q" " end insert mode, blinking block
+
+" Completion
 set omnifunc=syntaxcomplete#Complete
 
 " GUI only
 if has("gui_running")
   set guifont=InputMono\ ExLight:h13
-  set transparency=3 "Make transparent window
+  "Make transparent window
+  set transparency=3
 endif
 
 " Scrolling
 set scrolloff=10
 set sidescrolloff=15
 set sidescroll=1
-
-set cursorline "Highlight current line
-
+"Highlight current line
+set cursorline
 " Search
 set incsearch
 set hlsearch
@@ -72,11 +77,15 @@ function! SmartTab()
   endif
 endfunction
 
+" Update git branch and status
 au BufWritePost,FileWritePost * call git#branch_name()
 au BufWritePost,FileWritePost * call git#file_status()
+" Unfold all blocks
 au BufEnter * normal zR
 
+" Update branch name
 call git#branch_name()
+" Update git file changes
 call git#file_status()
 
 " Status line
@@ -102,28 +111,27 @@ menu Spelling.Disable           :setlocal nospell<Enter>
 menu Spelling.English,\ Russian :setlocal spell spelllang=en,ru<Enter>
 menu Spelling.Russian           :setlocal spell spelllang=ru<Enter>
 menu Spelling.English           :setlocal spell spelllang=en<Enter>
-" Run menu
-menu Run.Ruby :!ruby %<Enter>
-menu Run.Python :!python %<Enter>
 
 " Mapping
 set langmap=ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
 
+" Set leader for commands
 let mapleader = ","
 
-nnoremap <Tab> w
+" Goto next splitted window
 nnoremap <S-Tab> <C-w>w
+" Show next completion
 inoremap <Tab> <C-r>=SmartTab()<Enter>
+" Show previouse completion
 inoremap <S-Tab> <C-n>
-
-nnoremap B ^
-nnoremap E $
+" Goto lastes changes
 nnoremap gV `[v`]
-
+" Edit .vimrc
 nnoremap <leader>ev :vsp $MYVIMRC<Enter>
+" Edit .zshrc
 nnoremap <leader>ez :vsp ~/.zshrc<Enter>
+" Reload .vimrc in current buffer
 nnoremap <leader>sv :source $MYVIMRC<Enter>
-
 " Wrap word with quotes
 nnoremap <leader>" mzviw<Esc>a"<Esc>bi"<Esc>`zl
 " Lowercase word
@@ -138,13 +146,22 @@ nnoremap <leader>, :noh<Enter>
 nnoremap <leader>r :emenu Run.<Tab>
 " Spelling menu
 nnoremap <leader>s :emenu Spelling.<Tab>
-
+" Move one word back
 nnoremap <silent> <C-Left> b
+" Move one work forward
 nnoremap <silent> <C-Right> w
+nnoremap <Tab> w
+" Move to the begging of line
 nnoremap <silent> <C-a> ^
+nnoremap B ^
+" Move to the end of line
 nnoremap <silent> <C-e> $
-
+nnoremap E $
 " Move line up
-nnoremap <S-Up> :m .-2<Enter>==
+nnoremap K :m .-2<Enter>==
 " Move line down
-nnoremap <S-Down> :m .+1<Enter>==
+nnoremap J :m .+1<Enter>==
+" Move visually selected lines up
+vnoremap K :m '<-2<Enter>gv=gv
+" Move visually selected lines down
+vnoremap J :m '>+1<Enter>gv=gv

@@ -1,13 +1,28 @@
+"
+" My .vimrc
+"
+
+" Turn off Vi-compatible mode
 set nocompatible
+" Turn off audio bell
+set visualbell
+"
 set backspace=indent,eol,start
 
 " Show line numbers
 set number
-set ruler
+" Show line and column numbers
+" set ruler
 " Reload file on changes
 set autoread
+" Show entered command in last line
 set showcmd
+" Show mode (insert, visual) in last line
 set showmode
+" Timeout for mapping delays
+set timeoutlen=1000
+" Timeout for key code delays
+set ttimeoutlen=10
 
 " Turn off swap and backup files
 set noswapfile
@@ -27,14 +42,15 @@ set list
 set listchars=tab:>-,trail:·,precedes:⇇,extends:⇉,nbsp:␣
 set fillchars=fold:—,vert:│
 
+" Turn off wrap
 set nowrap
 set nolinebreak
 set formatoptions-=t
-" let &colorcolumn="80,".join(range(120,999),",")
-let &colorcolumn=join(range(120,999),",")
+
+" Turn on folding
 set foldmethod=indent
 
-" Turn on stynax
+" Turn on syntax
 syntax on
 filetype plugin on
 filetype indent on
@@ -50,6 +66,10 @@ set t_ZR=[23m
 " Setup cursor change on insert mode
 let &t_SI="\033[3 q" " start insert mode, blinking underline cursor
 let &t_EI="\033[1 q" " end insert mode, blinking block
+
+" Add color columns to make it visible
+" let &colorcolumn="80,".join(range(120,999),",")
+let &colorcolumn=join(range(120,999),",")
 
 " Completion
 set omnifunc=syntaxcomplete#Complete
@@ -75,7 +95,9 @@ au BufEnter,BufWritePost,FileWritePost * call utils#branch_name()
 au BufEnter,BufWritePost,FileWritePost * call utils#file_status()
 " Unfold all blocks
 au BufEnter * normal zR
+" Blink current line on focus
 au FocusGained * call utils#blink_line()
+
 " Status line
 set laststatus=2
 
@@ -110,18 +132,18 @@ set langmap=ёйцукенгшщзхъфывапролджэячсмитьбюЁ
 let mapleader = ","
 
 " Hard way to use hjkl for movements
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-noremap <Up> <Nop>
-noremap <Down> <Nop>
+nnoremap <Left>  :echo "Press h"<Enter>
+nnoremap <Right> :echo "Press l"<Enter>
+nnoremap <Up>    :echo "Press k"<Enter>
+nnoremap <Down>  :echo "Press j"<Enter>
 
-" Goto next splitted window
+" Go to next split window
 nnoremap <S-Tab> <C-w>w
 " Show next completion
 inoremap <Tab> <C-r>=utils#smart_tab()<Enter>
-" Show previouse completion
+" Show previous completion
 inoremap <S-Tab> <C-n>
-" Goto lastes changes
+" Go to latest changes
 nnoremap gV `[v`]
 " Edit .vimrc
 nnoremap <leader>ev :vsp $MYVIMRC<Enter>
@@ -139,8 +161,6 @@ nnoremap <leader>U mzgUaw`z
 nnoremap <leader>ai mzgg=G`z
 " Clear search highlight on \
 nnoremap <leader>, :noh<Enter>
-" Run menu
-nnoremap <leader>r :emenu Run.<Tab>
 " Spelling menu
 nnoremap <leader>s :emenu Spelling.<Tab>
 " Move one word back
@@ -163,4 +183,4 @@ vnoremap K :m '<-2<Enter>gv=gv
 " Move visually selected lines down
 vnoremap J :m '>+1<Enter>gv=gv
 " Most recent files
-nnoremap <leader>f :MRU <Enter>
+nnoremap <leader>o :MRU<Enter>

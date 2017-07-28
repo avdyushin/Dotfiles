@@ -1,9 +1,7 @@
-if has("gui_running")
-  " Set font
-  set guifont=InputMono\ ExLight:h13
-  " Make transparent window
-  set transparency=3
-endif
+" Set font
+set guifont=InputMono\ ExLight:h13
+" Make transparent window
+set transparency=5
 
 " MacVim only
 if has("gui_macvim")

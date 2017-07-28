@@ -52,6 +52,7 @@ hi TabLine      ctermfg=248 ctermbg=232 cterm=none
 
 hi User1        guifg=#36A3D9 guibg=#14191F gui=none   ctermfg=38   ctermbg=232  cterm=none
 hi User2        guifg=#FF7733 guibg=#14191F gui=none   ctermfg=202  ctermbg=232  cterm=none
+hi User3        guifg=#FF3333 guibg=NONE    gui=none   ctermfg=196  ctermbg=none cterm=none
 hi OverLength   guifg=NONE    guibg=NONE    gui=italic ctermfg=none ctermbg=none cterm=italic
 
 match OverLength /\%>80v.\+/

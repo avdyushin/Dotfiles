@@ -21,7 +21,7 @@ set expandtab
 
 " Show tabs, trail and non-break spaces
 set list
-set listchars=tab:>-,trail:·,precedes:←,extends:→,nbsp:·
+set listchars=tab:>-,trail:·,precedes:⇇,extends:⇉,nbsp:␣
 set fillchars=fold:—,vert:│
 
 set nowrap
@@ -31,9 +31,12 @@ set formatoptions-=t
 let &colorcolumn=join(range(120,999),",")
 set foldmethod=indent
 
+" Turn on stynax
+syntax on
 filetype plugin on
 filetype indent on
-syntax on
+
+" Set color scheme
 colorscheme ayu2
 
 " Set 256 colors
@@ -48,45 +51,27 @@ let &t_EI="\033[1 q" " end insert mode, blinking block
 " Completion
 set omnifunc=syntaxcomplete#Complete
 
-" GUI only
-if has("gui_running")
-  set guifont=InputMono\ ExLight:h13
-  "Make transparent window
-  set transparency=3
-endif
-
 " Scrolling
 set scrolloff=10
 set sidescrolloff=15
 set sidescroll=1
+
 "Highlight current line
 set cursorline
+
 " Search
 set incsearch
 set hlsearch
 set ignorecase
 set smartcase
 
-" Smart tab for completion
-function! SmartTab()
-  let col = col('.') - 1
-  if !col || getline('.')[col - 1] !~ '\k'
-    return "\<Tab>"
-  else
-    return "\<C-p>"
-  endif
-endfunction
-
+" Update trailing space warnings
+au BufEnter,BufWritePost,CursorHold * call utils#trailing_spaces()
 " Update git branch and status
-au BufWritePost,FileWritePost * call git#branch_name()
-au BufWritePost,FileWritePost * call git#file_status()
+au BufEnter,BufWritePost,FileWritePost * call utils#branch_name()
+au BufEnter,BufWritePost,FileWritePost * call utils#file_status()
 " Unfold all blocks
 au BufEnter * normal zR
-
-" Update branch name
-call git#branch_name()
-" Update git file changes
-call git#file_status()
 
 " Status line
 set laststatus=2
@@ -98,7 +83,10 @@ set statusline+=%{g:git_file_status}
 set statusline+=\ %=
 set statusline+=%#User1#
 set statusline+=%{g:git_branch_name}
-set statusline+=\ %*
+set statusline+=%*
+set statusline+=%#User3#
+set statusline+=%{g:has_trailing_spaces}
+set statusline+=%*
 " set statusline+=%2B
 set statusline+=%c/%L\ %p%%
 
@@ -121,7 +109,7 @@ let mapleader = ","
 " Goto next splitted window
 nnoremap <S-Tab> <C-w>w
 " Show next completion
-inoremap <Tab> <C-r>=SmartTab()<Enter>
+inoremap <Tab> <C-r>=utils#smart_tab()<Enter>
 " Show previouse completion
 inoremap <S-Tab> <C-n>
 " Goto lastes changes

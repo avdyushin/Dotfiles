@@ -44,3 +44,20 @@ function! utils#trailing_spaces()
     let g:has_trailing_spaces = ''
   endif
 endfunction
+
+function! utils#blink_line()
+  setlocal nocursorline
+  redraw
+  sleep 100m
+
+  setlocal cursorline
+  redraw
+  sleep 100m
+
+  setlocal nocursorline
+  redraw
+  sleep 100m
+
+  setlocal cursorline
+  redraw
+endfunction

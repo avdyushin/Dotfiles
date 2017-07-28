@@ -8,6 +8,8 @@ endif
 " MacVim only
 if has("gui_macvim")
   " Hide scrollbars
+  set guioptions-=R
+  set guioptions-=L
   set guioptions-=r
   set guioptions-=l
 endif

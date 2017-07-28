@@ -1,12 +1,15 @@
 set nocompatible
 set backspace=indent,eol,start
 
+" Show line numbers
 set number
 set ruler
+" Reload file on changes
 set autoread
 set showcmd
 set showmode
 
+" Turn off swap and backup files
 set noswapfile
 set nobackup
 set nowb
@@ -72,7 +75,7 @@ au BufEnter,BufWritePost,FileWritePost * call utils#branch_name()
 au BufEnter,BufWritePost,FileWritePost * call utils#file_status()
 " Unfold all blocks
 au BufEnter * normal zR
-
+au FocusGained * call utils#blink_line()
 " Status line
 set laststatus=2
 
@@ -105,6 +108,12 @@ set langmap=ёйцукенгшщзхъфывапролджэячсмитьбюЁ
 
 " Set leader for commands
 let mapleader = ","
+
+" Hard way to use hjkl for movements
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+noremap <Up> <Nop>
+noremap <Down> <Nop>
 
 " Goto next splitted window
 nnoremap <S-Tab> <C-w>w

@@ -162,3 +162,5 @@ nnoremap J :m .+1<Enter>==
 vnoremap K :m '<-2<Enter>gv=gv
 " Move visually selected lines down
 vnoremap J :m '>+1<Enter>gv=gv
+" Most recent files
+nnoremap <leader>f :MRU <Enter>

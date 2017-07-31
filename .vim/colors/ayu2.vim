@@ -37,8 +37,8 @@ hi Pmenu        guifg=#ffffff guibg=#444444 gui=none ctermfg=255  ctermbg=238
 hi PmenuSel     guifg=#000000 guibg=#B8CC52 gui=none ctermfg=0    ctermbg=148
 
 hi Search       guifg=#0F1419 guibg=#B8CC52 gui=none ctermfg=0    ctermbg=148
-hi StatusLine   guifg=#E6E1CF guibg=#14191F gui=none ctermfg=230  ctermbg=232  cterm=none
-hi StatusLineNC guifg=#3D3A44 guibg=#14191F gui=none ctermfg=246  ctermbg=232  cterm=none
+hi StatusLine   guifg=#E6E1CF guibg=#14191F gui=none ctermfg=230  ctermbg=234  cterm=none
+hi StatusLineNC guifg=#3D3A44 guibg=#14191F gui=none ctermfg=246  ctermbg=234  cterm=none
 hi VertSplit    guifg=#3D3A44 guibg=NONE    gui=none ctermfg=238  ctermbg=none cterm=none
 
 hi Folded       guifg=#585058 guibg=#151A1E gui=none ctermfg=248  ctermbg=4
@@ -50,9 +50,9 @@ hi TabLineSel   ctermfg=148 ctermbg=232 cterm=none
 hi TabLineFill  ctermfg=0   ctermbg=232 cterm=none
 hi TabLine      ctermfg=248 ctermbg=232 cterm=none
 
-hi User1        guifg=#36A3D9 guibg=#14191F gui=none   ctermfg=38   ctermbg=232  cterm=none
-hi User2        guifg=#FF7733 guibg=#14191F gui=none   ctermfg=202  ctermbg=232  cterm=none
-hi User3        guifg=#FF3333 guibg=NONE    gui=none   ctermfg=196  ctermbg=none cterm=none
+hi User1        guifg=#36A3D9 guibg=#14191F gui=none   ctermfg=38   ctermbg=234  cterm=none
+hi User2        guifg=#FF7733 guibg=#14191F gui=none   ctermfg=202  ctermbg=234  cterm=none
+hi User3        guifg=#FF3333 guibg=NONE    gui=none   ctermfg=196  ctermbg=234 cterm=none
 hi OverLength   guifg=NONE    guibg=NONE    gui=italic ctermfg=none ctermbg=none cterm=italic
 
 match OverLength /\%>80v.\+/

@@ -3,7 +3,7 @@ function git-branch() {
   echo ${ref#refs/heads/}
 }
 
-function git-status() {
+function git-file-status() {
   gitstat=$(git status 2>/dev/null | grep '\(Untracked\|Changes\)')
   dirty='＊'
   if [[ $(echo ${gitstat} | grep -c "^Changes to be committed:") > 0 ]]; then
@@ -27,10 +27,21 @@ function git-status() {
   fi
 }
 
+function git-upstream-status() {
+  count=$(git rev-list --count --left-right "@{upstream}"...HEAD)
+  case $count in
+    "")                 ;;
+    "0	0") echo -n "=" ;;
+    *"	0") echo -n "←" ;;
+    "0	"*) echo -n "→" ;;
+    *)      echo -n "↔" ;;
+  esac
+}
+
 function git-prompt() {
   branch="$(git-branch)" || return
   color_branch="%F{240} ${branch}%f"
-  echo "${color_branch}%F{240}$(git-status)%f"
+  echo "${color_branch}%F{240}$(git-file-status)%f %F{236}$(git-upstream-status)%f"
 }
 
 function base-prompt() {

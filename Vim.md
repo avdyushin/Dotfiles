@@ -101,6 +101,14 @@ gUaw : Change all of current WORD to upper.
 g~~  : Invert case to entire line
 ```
 
+### Page up/down
+```
+<C-b> : Move back one full screen
+<C-f> : Move forward one full screen
+<C-d> : Move down 1/2 screen
+<C-u> : Move up 1/2 screen
+```
+
 ### Moving over windows
 Once you have multiple windows open, there are many window commands available all starting with the <C-w> key:
 ```

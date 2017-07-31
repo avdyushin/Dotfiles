@@ -50,9 +50,14 @@ hi TabLineSel   ctermfg=148 ctermbg=232 cterm=none
 hi TabLineFill  ctermfg=0   ctermbg=232 cterm=none
 hi TabLine      ctermfg=248 ctermbg=232 cterm=none
 
-hi User1        guifg=#36A3D9 guibg=#14191F gui=none   ctermfg=38   ctermbg=234  cterm=none
-hi User2        guifg=#FF7733 guibg=#14191F gui=none   ctermfg=202  ctermbg=234  cterm=none
-hi User3        guifg=#FF3333 guibg=NONE    gui=none   ctermfg=196  ctermbg=234 cterm=none
-hi OverLength   guifg=NONE    guibg=NONE    gui=italic ctermfg=none ctermbg=none cterm=italic
+hi DiffAdd      guifg=#87af87 guibg=#0F1419 gui=reverse ctermfg=108  ctermbg=235  cterm=reverse
+hi DiffChange   guifg=#8787af guibg=#0F1419 gui=reverse ctermfg=103  ctermbg=235  cterm=reverse
+hi DiffDelete   guifg=#af5f5f guibg=#0F1419 gui=reverse ctermfg=131  ctermbg=235  cterm=reverse
+hi DiffText     guifg=#ff8700 guibg=#0F1419 gui=reverse ctermfg=208  ctermbg=235  cterm=reverse
 
-match OverLength /\%>80v.\+/
+hi User1        guifg=#36A3D9 guibg=#14191F gui=none    ctermfg=38   ctermbg=234  cterm=none
+hi User2        guifg=#FF7733 guibg=#14191F gui=none    ctermfg=202  ctermbg=234  cterm=none
+hi User3        guifg=#FF3333 guibg=NONE    gui=none    ctermfg=196  ctermbg=234  cterm=none
+hi OverLength   guifg=NONE    guibg=NONE    gui=italic  ctermfg=none ctermbg=none cterm=italic
+
+match OverLength /\%>119v.\+/

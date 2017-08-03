@@ -28,7 +28,7 @@ function git-file-status() {
 }
 
 function git-upstream-status() {
-  count=$(git rev-list --count --left-right "@{upstream}"...HEAD)
+  count=$(git rev-list --count --left-right "@{upstream}"...HEAD 2>/dev/null)
   case $count in
     "")                 ;;
     "0	0") echo -n "=" ;;

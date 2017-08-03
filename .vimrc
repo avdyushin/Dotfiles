@@ -97,6 +97,8 @@ au BufEnter,BufWritePost,FileWritePost * call utils#file_status()
 au BufEnter * normal zR
 " Blink current line on focus
 au FocusGained * call utils#blink_line()
+" Quick fix window
+au QuickFixCmdPost * nested cwindow
 
 " Status line
 set laststatus=2
@@ -151,6 +153,8 @@ nnoremap <leader>ev :vsp $MYVIMRC<Enter>
 nnoremap <leader>ez :vsp ~/.zshrc<Enter>
 " Reload .vimrc in current buffer
 nnoremap <leader>sv :source $MYVIMRC<Enter>
+" Save and make
+nnoremap <leader>r :w<Enter> :make<Enter>
 " Wrap word with quotes
 nnoremap <leader>" mzviw<Esc>a"<Esc>bi"<Esc>`zl
 " Lowercase word

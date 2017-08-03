@@ -1,1 +1,2 @@
-map <D-r> :w<Enter>:!elixir %<Enter>
+setlocal makeprg=elixir\ %
+setlocal errorformat=

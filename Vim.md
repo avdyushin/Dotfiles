@@ -77,6 +77,19 @@
 * `gUaw` change all of current word to upper.
 * `g~~` invert case to entire line
 
+## Search
+
+* `/pattern` to search for pattern
+* `n` go to next search results
+* `N` go to previous search results
+* `:g//` to list lines with results last pattern
+* `:g/pattern/` list lines with search results for pattern
+* `:vimgrep /pattern/ *.md` search in all md files in current directory
+
+### Replace
+
+* `:%s/pattern/yyy/g` to replace pattern to yyy in whole file
+
 ## Add-ons
 
 ### Add new file type detection

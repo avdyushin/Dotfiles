@@ -139,6 +139,10 @@ nnoremap <Right> :echo "Press l"<Enter>
 nnoremap <Up>    :echo "Press k"<Enter>
 nnoremap <Down>  :echo "Press j"<Enter>
 
+" Make search result in the middle of the screen
+nnoremap n nzz
+nnoremap N Nzz
+
 " Go to next split window
 nnoremap <S-Tab> <C-w>w
 " Show next completion

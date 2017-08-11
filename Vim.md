@@ -77,8 +77,15 @@
 * `gUaw` change all of current word to upper.
 * `g~~` invert case to entire line
 
-## Search
+### Visual mode
+* `iw`, `iW` select word
+* `ip`, `ap` select paragraph
+* `i{`, `i(`, `i<` select block between pair symbols
 
+## Search
+* `*` go to next word under cursor
+* `#` go to previuse word under cursor
+* `[I`, `]I` show all lines with word under cursor
 * `/pattern` to search for pattern
 * `n` go to next search results
 * `N` go to previous search results
@@ -87,7 +94,6 @@
 * `:vimgrep /pattern/ *.md` search in all md files in current directory
 
 ### Replace
-
 * `:%s/pattern/yyy/g` to replace pattern to yyy in whole file
 
 ## Add-ons

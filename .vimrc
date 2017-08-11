@@ -117,8 +117,12 @@ set statusline+=%*
 " set statusline+=%2B
 set statusline+=%c/%L\ %p%%
 
+" Find path
+set path=.,**
 " Menus
 set wildmenu
+"set wildignorecase
+"set wildmode=list:full
 
 set wcm=<Tab>
 " Spelling menu

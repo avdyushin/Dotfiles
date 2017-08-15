@@ -16,6 +16,8 @@
 * `7k` go to 7 lines up
 * `2}` jump to next 2 paragraphs
 * `3{` jump to previous 3 paragraphs
+* `]]` jump to next function
+* `[[` jump to previus function
 
 ### Spelling mode
 * `]s` go to next misspelled word

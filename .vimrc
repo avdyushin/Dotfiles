@@ -29,13 +29,20 @@ set noswapfile
 set nobackup
 set nowb
 
+" To replace all tabs to space in opened file, just run:
+" :%retab
+" Indents will have a width of 2
+set shiftwidth=4
+" Number of columns for a tab
+set softtabstop=4
+" The width of tab is 2
+set tabstop=4
+" Expand tabs to spaces
+set expandtab
+"
 set autoindent
 set smartindent
 set smarttab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
-set expandtab
 
 " Show tabs, trail and non-break spaces
 set list

@@ -4,7 +4,7 @@ source $HOME/.zsh/.zenv
 source $HOME/.zsh/.zalias
 
 autoload -U colors && colors
-autoload -U compinit && compinit
+autoload -U compinit && compinit -u
 
 autoload -U edit-command-line
 zle -N edit-command-line

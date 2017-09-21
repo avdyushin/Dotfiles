@@ -140,6 +140,10 @@ menu Spelling.English           :setlocal spell spelllang=en<Enter>
 
 " Mapping
 set langmap=ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
+" set keymap=russian-jcukenwin
+cabbrev й q
+cabbrev ц w
+cabbrev цй wq
 
 " Set leader for commands
 let mapleader = ","

@@ -8,3 +8,5 @@
 	required = true
 [diff]
 	tool = vimdiff
+[credential]
+	helper = osxkeychain

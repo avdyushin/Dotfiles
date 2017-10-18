@@ -119,6 +119,7 @@
 | Replace actions | Command |
 | :---            | :---    |
 | Replace `aaa` to `bbb` in whole file | `:%s/aaa/bbb/g` |
+| Replace only in lines than contains `string` | `:g/string/s/aaa/bbb/g` |
 
 #### Moving over windows
 | Move actions | Command |

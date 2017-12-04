@@ -46,8 +46,12 @@ set smarttab
 
 " Show tabs, trail and non-break spaces
 set list
+
+if has("patch-7.4.710")
 set listchars=tab:>-,trail:·,precedes:⇇,extends:⇉,nbsp:␣
 set fillchars=fold:—,vert:│
+else
+endif
 
 " Turn off wrap
 set nowrap
@@ -139,7 +143,7 @@ menu Spelling.Russian           :setlocal spell spelllang=ru<Enter>
 menu Spelling.English           :setlocal spell spelllang=en<Enter>
 
 " Mapping
-set langmap=ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
+set langmap='ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>'
 " set keymap=russian-jcukenwin
 cabbrev й q
 cabbrev ц w

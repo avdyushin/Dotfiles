@@ -1,6 +1,8 @@
 "
 " My .vimrc
 "
+scriptencoding utf-8
+set encoding=utf-8
 
 " Turn off Vi-compatible mode
 set nocompatible
@@ -47,11 +49,8 @@ set smarttab
 " Show tabs, trail and non-break spaces
 set list
 
-if has("patch-7.4.710")
 set listchars=tab:>-,trail:·,precedes:⇇,extends:⇉,nbsp:␣
 set fillchars=fold:—,vert:│
-else
-endif
 
 " Turn off wrap
 set nowrap

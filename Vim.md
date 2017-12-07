@@ -114,12 +114,14 @@
 | To list lines with results last pattern | `:g//` |
 | List lines with search results for pattern | `:g/pattern/` |
 | Search in all Markdown files in current directory | `:vimgrep /pattern/ *.md` |
+| Count number of matches in file | `:%s/patter//gn` |
 
 #### Replace
 | Replace actions | Command |
 | :---            | :---    |
 | Replace `aaa` to `bbb` in whole file | `:%s/aaa/bbb/g` |
 | Replace only in lines than contains `string` | `:g/string/s/aaa/bbb/g` |
+| Convert tabs to expandtab settings | `:%retab` |
 
 #### Moving over windows
 | Move actions | Command |

@@ -1,68 +1,80 @@
+typeset -a ealiases
+ealiases=(`alias | sed 's/=.*//'`)
+
+function expand-ealias() {
+    if [[ $LBUFFER =~ "(^|[;|&])\s*(${(j:|:)ealiases})\$" ]]; then
+        zle _expand_alias
+        zle expand-word
+    fi
+    zle magic-space
+}
+
 function git-branch() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  echo ${ref#refs/heads/}
+    ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+    echo ${ref#refs/heads/}
 }
 
 function git-file-status() {
-  gitstat=$(git status 2>/dev/null | grep '\(Untracked\|Changes\)')
-  dirty='＊'
-  if [[ $(echo ${gitstat} | grep -c "^Changes to be committed:") > 0 ]]; then
-    echo -n "${dirty}"
-    return
-  fi
+    gitstat=$(git status 2>/dev/null | grep '\(Untracked\|Changes\)')
+    dirty='＊'
+    if [[ $(echo ${gitstat} | grep -c "^Changes to be committed:") > 0 ]]; then
+        echo -n "${dirty}"
+        return
+    fi
 
-  if [[ $(echo ${gitstat} | grep -c "^Changes not staged for commit:") > 0 ]]; then
-    echo -n "${dirty}"
-    return
-  fi
+    if [[ $(echo ${gitstat} | grep -c "^Changes not staged for commit:") > 0 ]]; then
+        echo -n "${dirty}"
+        return
+    fi
 
-  if [[ $(echo ${gitstat} | grep -c "^Untracked files:") > 0 ]]; then
-    echo -n "${dirty}"
-    return
-  fi
+    if [[ $(echo ${gitstat} | grep -c "^Untracked files:") > 0 ]]; then
+        echo -n "${dirty}"
+        return
+    fi
 
-  if [[ $(echo ${gitstat} | wc -l | tr -d ' ') == 0 ]]; then
-    echo -n "${dirty}"
-    return
-  fi
+    if [[ $(echo ${gitstat} | wc -l | tr -d ' ') == 0 ]]; then
+        echo -n "${dirty}"
+        return
+    fi
 }
 
 function git-upstream-status() {
-  count=$(git rev-list --count --left-right "@{upstream}"...HEAD 2>/dev/null)
-  case $count in
-    "")                 ;;
-    "0	0") echo -n "=" ;;
-    *"	0") echo -n "←" ;;
-    "0	"*) echo -n "→" ;;
-    *)      echo -n "↔" ;;
-  esac
+    count=$(git rev-list --count --left-right "@{upstream}"...HEAD 2>/dev/null)
+    case $count in
+        "")                 ;;
+        "0	0") echo -n "=" ;;
+        *"	0") echo -n "←" ;;
+        "0	"*) echo -n "→" ;;
+        *)      echo -n "↔" ;;
+    esac
 }
 
 function git-prompt() {
-  branch="$(git-branch)" || return
-  color_branch="%F{240} ${branch}%f"
-  echo "${color_branch}%F{240}$(git-file-status)%f %F{236}$(git-upstream-status)%f"
+    branch="$(git-branch)" || return
+    color_branch="%F{240} ${branch}%f"
+    echo "${color_branch}%F{240}$(git-file-status)%f %F{236}$(git-upstream-status)%f"
 }
 
 function base-prompt() {
-  color_user="%F{4}%n%f"
-  color_host="%F{3}%m%f"
-  color_path="%F{2}%~%f"
-  echo "${color_user}  ${color_host} ${color_path}"
+    color_user="%F{4}%n%f"
+    color_host="%F{3}%m%f"
+    color_path="%F{2}%~%f"
+    echo "${color_user}  ${color_host} ${color_path}"
 }
 
 function last-exit-code() {
-  exit_code=$?
-  if [[ $exit_code -ne 0 ]]; then
-    echo "${exit_code}"
-  fi
+    exit_code=$?
+    if [[ $exit_code -ne 0 ]]; then
+        echo "${exit_code}"
+    fi
 }
 
 function print-colors() {
-  for i in {0..255} ; do
-    printf "\x1b[48;5;%sm%3d\e[0m " "$i" "$i"
-    if (( i == 15 )) || (( i > 15 )) && (( (i-15) % 6 == 0 )); then
-      printf "\n";
-    fi
-  done
+    for i in {0..255} ; do
+        printf "\x1b[48;5;%sm%3d\e[0m " "$i" "$i"
+        if (( i == 15 )) || (( i > 15 )) && (( (i-15) % 6 == 0 )); then
+            printf "\n";
+        fi
+    done
 }
+

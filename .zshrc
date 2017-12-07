@@ -9,6 +9,8 @@ autoload -U compinit && compinit -u
 autoload -U edit-command-line
 zle -N edit-command-line
 
+zle -N expand-ealias
+
 setopt prompt_subst
 
 setopt autocd

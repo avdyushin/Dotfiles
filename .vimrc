@@ -1,6 +1,8 @@
 "
 " My .vimrc
 "
+scriptencoding utf-8
+set encoding=utf-8
 
 " Turn off Vi-compatible mode
 set nocompatible
@@ -46,6 +48,7 @@ set smarttab
 
 " Show tabs, trail and non-break spaces
 set list
+
 set listchars=tab:>-,trail:·,precedes:⇇,extends:⇉,nbsp:␣
 set fillchars=fold:—,vert:│
 
@@ -139,7 +142,7 @@ menu Spelling.Russian           :setlocal spell spelllang=ru<Enter>
 menu Spelling.English           :setlocal spell spelllang=en<Enter>
 
 " Mapping
-set langmap=ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
+set langmap='ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>'
 " set keymap=russian-jcukenwin
 cabbrev й q
 cabbrev ц w

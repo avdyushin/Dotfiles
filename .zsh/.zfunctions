@@ -14,6 +14,14 @@ function git-branch() {
     echo ${ref#refs/heads/}
 }
 
+function git-create-branch() {
+    if [[ $# -eq 2 ]]; then
+        git checkout -b "$USER/$1/$2"
+    else
+        echo "Usage: $0 type name" >&2
+    fi
+}
+
 function git-file-status() {
     gitstat=$(git status 2>/dev/null | grep '\(Untracked\|Changes\)')
     dirty='＊'

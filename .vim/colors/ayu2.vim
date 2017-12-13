@@ -28,6 +28,7 @@ hi Keyword      guifg=#E6B673 guibg=NONE    gui=none ctermfg=45
 hi Special      guifg=#E6B673 guibg=NONE    gui=none ctermfg=208
 hi Undefined    guifg=#36A3D9 guibg=NONE    gui=none ctermfg=208
 hi Todo         guifg=#F07178 guibg=NONE    gui=none ctermfg=211  ctermbg=0    cterm=none
+hi SpellBad     guifg=#F00000 guibg=NONE    gui=undercurl ctermfg=009 ctermbg=none cterm=undercurl
 
 " Matched parent color
 hi MatchParen   guifg=#0F1419 guibg=#B6B1BF gui=italic ctermfg=157  ctermbg=237  cterm=bold

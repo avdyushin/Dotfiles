@@ -2,6 +2,7 @@ desc "Update from git and create symlinks"
 task :update do
   update_from_git
   create_symlinks
+  reload_zshrc
 end
 
 task :symlinks do
@@ -20,6 +21,10 @@ end
 
 def update_from_git
   system('git pull')
+end
+
+def reload_zshrc
+  system('source ~/.zshrc')
 end
 
 def create_symlinks

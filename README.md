@@ -38,3 +38,7 @@ Using Ayu2 theme:
 ## Font
 
 I use nice [Input](http://input.fontbureau.com) font.
+
+## Links
+
+Ayu2 color theme for Xcode is here [XcodeThemes](https://github.com/avdyushin/XcodeThemes).

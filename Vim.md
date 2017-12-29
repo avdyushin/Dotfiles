@@ -40,6 +40,7 @@
 | Previous paragraph | `{`, `3{` |
 | Next function | `]]` |
 | Previous function | `[[` |
+| To first given character in line | `fx`, `f)` |
 
 #### Text creation and manipulation commands
 | Editing action | Command |
@@ -57,6 +58,10 @@
 | Undo last change | `u` |
 | Restore line to original state | `U` |
 | Indent whole file | `gg=G` |
+| Add indention level in Insert Mode | `^T` |
+| Remove indention leve in Insert Mode | `^D` |
+| Add indention level in Normal/Visual Mode | `>>` |
+| Remove indention leve in Normal/Visual Mode | `<<` |
 
 #### Changing case commands
 | Change case action | Command |
@@ -101,6 +106,7 @@
 | Select paragraph | `ip`, `ap` |
 | Select block between pair symbols | `i{`, `i(`, `i<` |
 | Enter column insert mode | `Shift+i` |
+| Filter selected text | `!sort` will sort and replace selected text |
 
 #### Search
 | Search actions | Command |
@@ -138,11 +144,19 @@
 | go to window on left | `<C-w><Left>` |
 | go to window on right | `<C-w><Right>` |
 
+#### Filtering text
+| Filter action | Command |
+| :---          | :---    |
+| Sort lines from 12 to 42 and replace those lines | `12,42!sort` |
+
 ### Add-ons
 
 #### Editing file with (m)vim
 * `vim -p file1 file2` open in tabs
 * `mvim --remote-tab file3` open file in existing editor as tab
+
+#### Find text in files and display in QuickFix
+* `:vimgrep pattern *.ext`
 
 #### Add new file type detection
 ```sh

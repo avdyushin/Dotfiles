@@ -21,6 +21,8 @@ set autoread
 set showcmd
 " Show mode (insert, visual) in last line
 set showmode
+" Show paired braces
+set showmatch
 " Timeout for mapping delays
 set timeoutlen=1000
 " Timeout for key code delays

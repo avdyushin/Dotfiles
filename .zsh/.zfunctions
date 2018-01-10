@@ -48,12 +48,15 @@ function git-file-status() {
 
 function git-upstream-status() {
     count=$(git rev-list --count --left-right "@{upstream}"...HEAD 2>/dev/null)
+    behind=$(echo $count | awk '{print $1}')
+    ahead=$(echo $count | awk '{print $2}')
+
     case $count in
         "")                 ;;
         "0	0") echo -n "=" ;;
-        *"	0") echo -n "←" ;;
-        "0	"*) echo -n "→" ;;
-        *)      echo -n "↔" ;;
+        *"	0") echo -n "${behind}↓" ;;
+        "0	"*) echo -n "${ahead}↑" ;;
+        *)      echo -n "~" ;;
     esac
 }
 

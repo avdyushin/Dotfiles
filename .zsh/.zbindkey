@@ -6,8 +6,8 @@ bindkey -M vicmd '^I'  vi-forward-blank-word # <Tab>
 bindkey -M vicmd 'f' vi-forward-blank-word
 bindkey -M vicmd 'b' vi-backward-word
 
-bindkey -M viins '^ '   expand-ealias
-bindkey -M viins ' '  magic-space
+bindkey -M viins '^ '  expand-ealias
+bindkey -M viins ' '   magic-space
 
 bindkey -M isearch ' ' magic-space
 

@@ -156,7 +156,10 @@
 * `mvim --remote-tab file3` open file in existing editor as tab
 
 #### Find text in files and display in QuickFix
-* `:vimgrep pattern *.ext`
+* `:vimgrep /pattern/ *.ext`
+
+Recursively:
+* `:vimgrep /pattern/ **/*.ext`
 
 #### Add new file type detection
 ```sh

@@ -126,8 +126,9 @@
 | Replace actions | Command |
 | :---            | :---    |
 | Replace `aaa` to `bbb` in whole file | `:%s/aaa/bbb/g` |
-| Replace only in lines than contains `string` | `:g/string/s/aaa/bbb/g` |
+| Replace only in lines that contains `string` | `:g/string/s/aaa/bbb/g` |
 | Convert tabs to expandtab settings | `:%retab` |
+| Delete lines that contains `pattern` | `:g/pattern/d` |
 
 #### Moving over windows
 | Move actions | Command |

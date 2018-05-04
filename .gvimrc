@@ -1,5 +1,5 @@
 " Set font
-set guifont=InputMono\ ExLight:h13
+set guifont=InputMono\ ExLight:h15
 " Make transparent window
 set transparency=5
 

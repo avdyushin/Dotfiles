@@ -8,6 +8,8 @@ set encoding=utf-8
 set nocompatible
 " Turn off audio bell
 set visualbell
+" Turn off visual bell
+set belloff=all
 "
 set backspace=indent,eol,start
 
@@ -144,7 +146,7 @@ menu Spelling.Russian           :setlocal spell spelllang=ru<Enter>
 menu Spelling.English           :setlocal spell spelllang=en<Enter>
 
 " Mapping
-set langmap='ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>'
+set langmap=ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
 " set keymap=russian-jcukenwin
 cabbrev й q
 cabbrev ц w

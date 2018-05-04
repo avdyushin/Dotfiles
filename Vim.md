@@ -129,6 +129,7 @@
 | Replace only in lines that contains `string` | `:g/string/s/aaa/bbb/g` |
 | Convert tabs to expandtab settings | `:%retab` |
 | Delete lines that contains `pattern` | `:g/pattern/d` |
+| Delete blank lines | `:g/^$/d` |
 
 #### Moving over windows
 | Move actions | Command |

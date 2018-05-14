@@ -113,6 +113,8 @@ au BufEnter * normal zR
 au FocusGained * call utils#blink_line()
 " Quick fix window
 au QuickFixCmdPost * nested cwindow
+" Templates
+au BufNewFile * silent! 0r $HOME/.vim/templates/skeleton.%:e
 
 " Status line
 set laststatus=2

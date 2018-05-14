@@ -20,7 +20,8 @@ function! utils#file_status()
     return
   endif
   let command = "cd " . expand('%:p:h') . " && git status --short 2>/dev/null | grep '" . file . "$'"
-  let modifier = substitute(system(command), '^\s*\(.\{-}\)\ ' . file . '\n\+$', '\1', '')
+  let escaped_file = substitute(file, '\*', '\\*', 'g')
+  let modifier = substitute(system(command), '^\s*\(.\{-}\)\ ' . escaped_file . '\n\+$', '\1', '')
   if empty(modifier)
     let g:git_file_status = ''
   else

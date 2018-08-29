@@ -4,7 +4,7 @@ setlocal softtabstop=4
 
 setlocal smartindent
 setlocal autoindent
-setlocal cinwords=defmodule,def,if,else,cond
+setlocal cinwords=defmodule,defmacro,def,if,else,cond,quote
 
 setlocal comments=:#
 setlocal commentstring=#\ %s

@@ -16,7 +16,8 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 
-setlocal makeprg=~/.vim/build/cargo_test.py
+setlocal shellpipe=2> "Collect only stderr
+setlocal makeprg=~/.vim/build/cargo_test.py "Cargo test and process output for Quickfix
 setlocal errorformat=
     \%WWarning:\ %f:%l:%c\ %m,
     \%EError:\ %f:%l:%c\ %m

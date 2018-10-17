@@ -11,9 +11,11 @@ def eprint(*args, **kwargs):
 pipes = subprocess.Popen("cargo test -- --nocapture", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 std_out, std_err = pipes.communicate()
 
-#print(std_err)
-#print(std_out)
+# Print original output
+print(std_err)
+print(std_out)
 
+# Write to stderr only processed errors and warnings
 re_err = re.compile("^error:\s(?P<Message>.+)\n\s+-->\s(?P<File>.*)", re.MULTILINE)
 errors = [m.groupdict() for m in re_err.finditer(std_err, re.MULTILINE)]
 for error in errors:

@@ -59,10 +59,10 @@ hi DiffChange   guifg=#8787af guibg=#0F1419 gui=reverse ctermfg=103  ctermbg=235
 hi DiffDelete   guifg=#af5f5f guibg=#0F1419 gui=reverse ctermfg=131  ctermbg=235  cterm=reverse
 hi DiffText     guifg=#ff8700 guibg=#0F1419 gui=reverse ctermfg=208  ctermbg=235  cterm=reverse
 
-hi QuickFixLineNumber     guifg=#B8CC52 guibg=NONE gui=none   ctermfg=248  ctermbg=4
-hi QuickFixFileName       guifg=#36A3D9 guibg=NONE gui=italic ctermfg=248  ctermbg=4
-hi QuickFixSeparatorBegin guifg=#2D3640 guibg=NONE gui=none   ctermfg=248  ctermbg=4
-hi QuickFixSeparatorEnd   guifg=#2D3640 guibg=NONE gui=none   ctermfg=248  ctermbg=4
+hi QuickFixLineNumber     guifg=#B8CC52 guibg=NONE gui=none   ctermfg=248  ctermbg=none
+hi QuickFixFileName       guifg=#36A3D9 guibg=NONE gui=italic ctermfg=254  ctermbg=none
+hi QuickFixSeparatorBegin guifg=#2D3640 guibg=NONE gui=none   ctermfg=0  ctermbg=none
+hi QuickFixSeparatorEnd   guifg=#2D3640 guibg=NONE gui=none   ctermfg=0  ctermbg=none
 
 hi User1        guifg=#36A3D9 guibg=#14191F gui=none    ctermfg=38   ctermbg=234  cterm=none
 hi User2        guifg=#FF7733 guibg=#14191F gui=none    ctermfg=202  ctermbg=234  cterm=none

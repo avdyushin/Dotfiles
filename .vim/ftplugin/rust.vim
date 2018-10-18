@@ -20,6 +20,7 @@ setlocal shellpipe=2> "Collect only stderr
 setlocal makeprg=~/.vim/build/cargo_test.py "Cargo test and process output for Quickfix
 setlocal errorformat=
     \%WWarning:\ %f:%l:%c\ %m,
+    \%IFailed:\ %f:%l:%c\ %m,
     \%EError:\ %f:%l:%c\ %m
 
 let maplocalleader = ","

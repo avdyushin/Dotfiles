@@ -31,5 +31,12 @@ for warning in warnings:
     if msg not in quickfix_log:
         quickfix_log.append(msg)
 
+re_tests = re.compile(".*panicked at\s\'(?P<Message>.*)\n(?P<Next>.*),\n(?P<Last>.*), (?P<File>.*)", re.MULTILINE)
+tests = [m.groupdict() for m in re_tests.finditer(std_err)]
+for test in tests:
+    msg = 'Failed: {} {}{}{}'.format(test['File'], test['Message'], test['Next'], test['Last'])
+    if msg not in quickfix_log:
+        quickfix_log.append(msg)
+
 for msg in quickfix_log:
     eprint(msg)

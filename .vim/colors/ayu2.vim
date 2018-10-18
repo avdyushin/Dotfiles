@@ -25,7 +25,7 @@ hi PreProc      guifg=#E6B673 guibg=NONE    gui=none ctermfg=222
 hi Type         guifg=#36A3D8 guibg=NONE    gui=none ctermfg=45
 hi Structure    guifg=#E6B673 guibg=NONE    gui=none ctermfg=208
 hi Keyword      guifg=#E6B673 guibg=NONE    gui=none ctermfg=45
-hi Special      guifg=#E6B673 guibg=NONE    gui=none ctermfg=208
+hi Special      guifg=#E6B673 guibg=NONE    gui=none ctermfg=244
 hi Undefined    guifg=#36A3D9 guibg=NONE    gui=none ctermfg=208
 hi Todo         guifg=#F07178 guibg=NONE    gui=none ctermfg=211  ctermbg=0    cterm=none
 hi SpellBad     guifg=#F00000 guibg=NONE    gui=undercurl ctermfg=009 ctermbg=none cterm=undercurl

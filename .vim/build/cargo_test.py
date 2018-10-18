@@ -16,12 +16,20 @@ print(std_err)
 print(std_out)
 
 # Write to stderr only processed errors and warnings
-re_err = re.compile("^error:\s(?P<Message>.+)\n\s+-->\s(?P<File>.*)", re.MULTILINE)
-errors = [m.groupdict() for m in re_err.finditer(std_err, re.MULTILINE)]
+re_err = re.compile("^error(\[.*\])?:\s(?P<Message>.+)\n\s+-->\s(?P<File>.*)", re.MULTILINE)
+errors = [m.groupdict() for m in re_err.finditer(std_err)]
+quickfix_log = []
 for error in errors:
-    eprint('Error: {} {}'.format(error['File'], error['Message']))
+    msg = 'Error: {} {}'.format(error['File'], error['Message'])
+    if msg not in quickfix_log:
+        quickfix_log.append(msg)
 
-re_war = re.compile("^warning:\s(?P<Message>.+)\n\s+-->\s(?P<File>.*)", re.MULTILINE)
-warnings = [m.groupdict() for m in re_war.finditer(std_err, re.MULTILINE)]
+re_war = re.compile("^warning(\[.*\])?:\s(?P<Message>.+)\n\s+-->\s(?P<File>.*)", re.MULTILINE)
+warnings = [m.groupdict() for m in re_war.finditer(std_err)]
 for warning in warnings:
-    eprint('Warning: {} {}'.format(warning['File'], warning['Message']))
+    msg = 'Warning: {} {}'.format(warning['File'], warning['Message'])
+    if msg not in quickfix_log:
+        quickfix_log.append(msg)
+
+for msg in quickfix_log:
+    eprint(msg)

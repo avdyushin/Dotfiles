@@ -7,9 +7,7 @@ function! CargoTest()
 endfunction
 
 function! PrettyFormat()
-  let line = line('.')
-  execute "%!" . g:cargo_command . " fmt 2>/dev/null"
-  execute line
+  execute "!" . g:cargo_command . " fmt 2>/dev/null"
 endfunction
 
 set tabstop=4

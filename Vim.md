@@ -113,6 +113,10 @@
 | :---           | :---    |
 | Go to next word under cursor | `*` |
 | Go to previous word under cursor | `#` |
+| Go to next subword under cursor | `g*` |
+| Go to previous subword under cursor | `g#` |
+| Go to local declaration | `gd` |
+| Go to global declaration | `gD` |
 | Show all lines with word under cursor | `[I`, `]I` |
 | To search for pattern | `/pattern` |
 | Go to next search results | `n` |

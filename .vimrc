@@ -15,6 +15,8 @@ set backspace=indent,eol,start
 
 " Show line numbers
 set number
+" Select with mouse
+"set mouse+=a
 " Show line and column numbers
 " set ruler
 " Reload file on changes

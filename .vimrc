@@ -77,8 +77,10 @@ colorscheme ayu2
 " Set 256 colors
 set t_Co=256
 " Setup italic in terminal
-set t_ZH=[3m
-set t_ZR=[23m
+" set t_ZH=[3m
+" set t_ZR=[23m
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
 " Setup cursor change on insert mode
 let &t_SI="\033[3 q" " start insert mode, blinking underline cursor
 let &t_EI="\033[1 q" " end insert mode, blinking block
@@ -218,3 +220,5 @@ vnoremap K :m '<-2<Enter>gv=gv
 vnoremap J :m '>+1<Enter>gv=gv
 " Most recent files
 nnoremap <leader>o :MRU<Enter>
+" Execure last command again
+nnoremap <leader>. :!!<Enter>

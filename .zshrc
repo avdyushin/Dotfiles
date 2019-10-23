@@ -3,6 +3,7 @@ source $HOME/.zsh/.zbindkey
 source $HOME/.zsh/.zenv
 source $HOME/.zsh/.zalias
 source $HOME/.ghcup/env
+source $HOME/.zshlocal
 
 autoload -U colors && colors
 autoload -U compinit && compinit -u

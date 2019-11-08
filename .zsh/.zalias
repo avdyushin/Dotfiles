@@ -13,3 +13,5 @@ alias update_develop="git stash && git checkout develop && git pull && git stash
 alias fix="git-create-branch fixes"
 alias issue="git-create-branch issues"
 alias feature="git-create-branch feature"
+
+alias ungron="gron --ungron"

@@ -1,3 +1,5 @@
+autoload -U compinit && compinit -u
+
 source $HOME/.zsh/.zfunctions
 source $HOME/.zsh/.zbindkey
 source $HOME/.zsh/.zenv
@@ -6,7 +8,6 @@ source $HOME/.ghcup/env
 source $HOME/.zshlocal
 
 autoload -U colors && colors
-autoload -U compinit && compinit -u
 
 autoload -U edit-command-line
 zle -N edit-command-line

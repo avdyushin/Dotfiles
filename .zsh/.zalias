@@ -15,3 +15,5 @@ alias issue="git-create-branch issues"
 alias feature="git-create-branch feature"
 
 alias ungron="gron --ungron"
+alias grep="grep --color"
+alias -g G="| grep"

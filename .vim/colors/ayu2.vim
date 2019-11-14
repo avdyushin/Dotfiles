@@ -47,7 +47,7 @@ hi FoldColumn   guifg=#585058 guibg=#151A1E gui=none ctermfg=248  ctermbg=4
 hi SignColumn   guifg=#2D3640 guibg=NONE    gui=none ctermfg=248  ctermbg=4
 hi Title        guifg=#787078 guibg=NONE    gui=bold ctermfg=254  ctermbg=none cterm=bold
 hi Visual       guifg=NONE    guibg=#253340 gui=none ctermfg=254  ctermbg=4
-hi SpecialKey   guifg=#A6A1AF guibg=#0F1419 gui=none ctermfg=244  ctermbg=none cterm=none
+hi SpecialKey   guifg=#A6A1AF guibg=#0F1419 gui=none ctermfg=240  ctermbg=none cterm=none
 hi Directory    guifg=#3E4B59 guibg=NONE    gui=none
 
 hi TabLineSel   gui=bold ctermfg=148 ctermbg=232 cterm=none

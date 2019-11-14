@@ -66,7 +66,7 @@ set nolinebreak
 set formatoptions-=t
 
 " Turn on folding
-set foldmethod=indent
+" set foldmethod=indent
 
 " Turn on syntax
 syntax on

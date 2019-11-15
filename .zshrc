@@ -50,6 +50,7 @@ zstyle ':completion:*:*:*:*:processes' list-colors "=(#b) #([0-9]#)*=0=${color[y
 
 precmd () {
   print -Pn "\e]2;%~\a"
+  update_terminal_cwd()
 
   RPS1="$(insert-mode)"
   PROMPT=$'$(base-prompt) $(git-prompt)\n ❯ '

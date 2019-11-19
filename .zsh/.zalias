@@ -1,7 +1,17 @@
+case `uname` in
+    Darwin)
+        alias ls="ls -hG"
+        alias ll="ls -hGla"
+        alias l="ls -hGla"
+        ;;
+    Linux)
+        alias ls="ls --color -hG"
+        alias ll="ls --color -hGla"
+        alias l="ls --color -hGla"
+        ;;
+esac
+
 alias bc="bc -lq"
-alias ls="ls -hG"
-alias ll="ls -hGla"
-alias l="ls -hGla"
 alias gs="git status"
 alias -g ND='*(/om[1])' # newest directory
 alias -g NF='*(.om[1])' # newest file

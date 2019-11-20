@@ -15,6 +15,10 @@ set belloff=all
 "
 set backspace=indent,eol,start
 
+if has('clipboard')
+    set clipboard=unnamed
+endif
+
 " Show line numbers
 set number
 " Select with mouse
@@ -66,7 +70,7 @@ set nolinebreak
 set formatoptions-=t
 
 " Turn on folding
-" set foldmethod=indent
+set foldmethod=manual
 
 " Turn on syntax
 syntax on

@@ -71,6 +71,8 @@ set formatoptions-=t
 
 " Turn on folding
 set foldmethod=manual
+" And turn off
+set nofoldenable
 
 " Turn on syntax
 syntax on
@@ -168,10 +170,10 @@ cabbrev цй wq
 let mapleader = ","
 
 " Hard way to use hjkl for movements
-nnoremap <Left>  :echo "Press h"<Enter>
-nnoremap <Right> :echo "Press l"<Enter>
-nnoremap <Up>    :echo "Press k"<Enter>
-nnoremap <Down>  :echo "Press j"<Enter>
+nnoremap <Left>  :bp <Enter>
+nnoremap <Right> :bn <Enter>
+nnoremap <Up>    :N <Enter>
+nnoremap <Down>  :n <Enter>
 
 " Make search result in the middle of the screen
 nnoremap n nzz

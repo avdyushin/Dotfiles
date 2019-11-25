@@ -169,7 +169,18 @@ cabbrev цй wq
 " Set leader for commands
 let mapleader = ","
 
-" Hard way to use hjkl for movements
+" -- INSERT --
+
+" Show next completion
+inoremap <Tab> <C-r>=utils#smart_tab()<Enter>
+" Show previous completion
+inoremap <S-Tab> <C-n>
+" Autocomplete tags
+inoremap <lt>/ </<C-x><C-o><Esc>==gi
+
+" -- NORMAL --
+
+"Hard way to use hjkl for movements
 nnoremap <Left>  :bp <Enter>
 nnoremap <Right> :bn <Enter>
 nnoremap <Up>    :N <Enter>
@@ -181,10 +192,6 @@ nnoremap N Nzz
 
 " Go to next split window
 nnoremap <S-Tab> <C-w>w
-" Show next completion
-inoremap <Tab> <C-r>=utils#smart_tab()<Enter>
-" Show previous completion
-inoremap <S-Tab> <C-n>
 " Go to latest changes
 nnoremap gV `[v`]
 " Edit .vimrc
@@ -230,3 +237,4 @@ vnoremap J :m '>+1<Enter>gv=gv
 nnoremap <leader>o :MRU<Enter>
 " Execure last command again
 nnoremap <leader>. :!!<Enter>
+

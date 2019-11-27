@@ -61,8 +61,8 @@ set smarttab
 " Show tabs, trail and non-break spaces
 set list
 
-set listchars=tab:>-,trail:·,precedes:⇇,extends:⇉,nbsp:␣
-set fillchars=fold:—,vert:│
+set listchars=tab:—-,trail:·,precedes:⇇,extends:⇉,nbsp:␣
+set fillchars=fold:—,vert:\|
 
 " Turn off wrap
 set nowrap

@@ -15,6 +15,10 @@ set belloff=all
 "
 set backspace=indent,eol,start
 
+if has('clipboard')
+    set clipboard=unnamed
+endif
+
 " Show line numbers
 set number
 " Select with mouse
@@ -57,8 +61,8 @@ set smarttab
 " Show tabs, trail and non-break spaces
 set list
 
-set listchars=tab:>-,trail:·,precedes:⇇,extends:⇉,nbsp:␣
-set fillchars=fold:—,vert:│
+set listchars=tab:—-,trail:·,precedes:⇇,extends:⇉,nbsp:␣
+set fillchars=fold:—,vert:\|
 
 " Turn off wrap
 set nowrap
@@ -66,7 +70,9 @@ set nolinebreak
 set formatoptions-=t
 
 " Turn on folding
-" set foldmethod=indent
+set foldmethod=manual
+" And turn off
+set nofoldenable
 
 " Turn on syntax
 syntax on
@@ -163,11 +169,22 @@ cabbrev цй wq
 " Set leader for commands
 let mapleader = ","
 
-" Hard way to use hjkl for movements
-nnoremap <Left>  :echo "Press h"<Enter>
-nnoremap <Right> :echo "Press l"<Enter>
-nnoremap <Up>    :echo "Press k"<Enter>
-nnoremap <Down>  :echo "Press j"<Enter>
+" -- INSERT --
+
+" Show next completion
+inoremap <Tab> <C-r>=utils#smart_tab()<Enter>
+" Show previous completion
+inoremap <S-Tab> <C-n>
+" Autocomplete tags
+inoremap <lt>/ </<C-x><C-o><Esc>==gi
+
+" -- NORMAL --
+
+"Hard way to use hjkl for movements
+nnoremap <Left>  :bp <Enter>
+nnoremap <Right> :bn <Enter>
+nnoremap <Up>    :N <Enter>
+nnoremap <Down>  :n <Enter>
 
 " Make search result in the middle of the screen
 nnoremap n nzz
@@ -175,10 +192,6 @@ nnoremap N Nzz
 
 " Go to next split window
 nnoremap <S-Tab> <C-w>w
-" Show next completion
-inoremap <Tab> <C-r>=utils#smart_tab()<Enter>
-" Show previous completion
-inoremap <S-Tab> <C-n>
 " Go to latest changes
 nnoremap gV `[v`]
 " Edit .vimrc
@@ -224,3 +237,4 @@ vnoremap J :m '>+1<Enter>gv=gv
 nnoremap <leader>o :MRU<Enter>
 " Execure last command again
 nnoremap <leader>. :!!<Enter>
+

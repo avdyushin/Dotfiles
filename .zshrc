@@ -4,8 +4,10 @@ source $HOME/.zsh/.zfunctions
 source $HOME/.zsh/.zbindkey
 source $HOME/.zsh/.zenv
 source $HOME/.zsh/.zalias
-source $HOME/.ghcup/env
-source $HOME/.zshlocal
+
+if [ -f $HOME/.zshlocal ]; then
+    source $HOME/.zshlocal
+fi
 
 autoload -U colors && colors
 

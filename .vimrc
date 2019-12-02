@@ -27,6 +27,8 @@ set number
 " set ruler
 " Reload file on changes
 set autoread
+" Write file before :make (and other commands)
+set autowrite
 " Show entered command in last line
 set showcmd
 " Show mode (insert, visual) in last line
@@ -201,7 +203,7 @@ nnoremap <leader>ez :vsp ~/.zshrc<Enter>
 " Reload .vimrc in current buffer
 nnoremap <leader>sv :source $MYVIMRC<Enter>
 " Save and make
-nnoremap <leader>r :w<Enter> :make<Enter>
+nnoremap <leader>r :make<Enter>
 " Wrap word with quotes
 nnoremap <leader>" mzviw<Esc>a"<Esc>bi"<Esc>`zl
 " Lowercase word

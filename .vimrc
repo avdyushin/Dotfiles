@@ -161,4 +161,4 @@ menu Spelling.English,\ Russian :setlocal spell spelllang=en,ru<Enter>
 menu Spelling.Russian           :setlocal spell spelllang=ru<Enter>
 menu Spelling.English           :setlocal spell spelllang=en<Enter>
 
-source .vimrc_map
+source $HOME/.vimrc_map

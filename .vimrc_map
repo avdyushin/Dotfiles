@@ -11,9 +11,9 @@ let mapleader = ","
 " -- INSERT --
 
 " Show next completion
-inoremap <Tab> <C-r>=utils#smart_tab()<Enter>
+" inoremap <Tab> <C-r>=utils#smart_tab()<Enter>
 " Show previous completion
-inoremap <S-Tab> <C-n>
+" inoremap <S-Tab> <C-n>
 " Autocomplete tags
 inoremap <lt>/ </<C-x><C-o><Esc>==gi
 

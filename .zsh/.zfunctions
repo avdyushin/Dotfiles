@@ -40,6 +40,14 @@ function git-create-branch() {
     fi
 }
 
+function git-update-from() {
+    if [[ $# -eq 1 ]]; then
+        git stash && git checkout $1 && git pull && git stash pop
+    else
+        echo "Usage: $0 branch" >&2
+    fi
+}
+
 function git-file-status() {
     gitstat=$(git status 2>/dev/null | grep '\(Untracked\|Changes\)')
     dirty='＊'

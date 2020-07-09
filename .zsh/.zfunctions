@@ -32,6 +32,11 @@ function git-branch() {
     echo ${ref#refs/heads/}
 }
 
+function git-remote-name() {
+    name=$(git config --get remote.origin.url 2> /dev/null) || return
+    echo $(basename ${name})
+}
+
 function git-create-branch() {
     if [[ $# -eq 2 ]]; then
         git checkout -b "$USER/$1/$2"

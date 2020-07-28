@@ -7,7 +7,7 @@ endif
 let colors_name = "ayu2"
 
 hi Normal       guifg=#E6E1CF guibg=#0F1419 gui=none ctermfg=230  ctermbg=none cterm=none
-hi NonText      guifg=#A6A1AF guibg=#0F1419 gui=none ctermfg=244  ctermbg=none cterm=none
+hi NonText      guifg=#A6A1AF guibg=#0F1419 gui=none ctermfg=237  ctermbg=none cterm=none
 hi CursorColumn guifg=NONE    guibg=#191E22 gui=none ctermfg=none ctermbg=234  cterm=none
 hi CursorLine   guifg=NONE    guibg=#191E22 gui=none ctermfg=none ctermbg=234  cterm=none
 hi CursorLineNr guifg=#F29718 guibg=#191E22 gui=none ctermfg=none ctermbg=234  cterm=none

@@ -45,6 +45,15 @@ function git-create-branch() {
     fi
 }
 
+function git-re-add-tag() {
+    commit=$(git rev-parse --short HEAD 2> /dev/null) || return
+    if [[ $# -eq 1 ]]; then
+        git tag -d $1 && git push --delete origin $1 && git tag -a $1 $commit -m 'Tag' && git push origin $1
+    else
+        echo "Usage: $0 tag" >&2
+    fi
+}
+
 function git-update-from() {
     if [[ $# -eq 1 ]]; then
         git stash && git checkout $1 && git pull && git stash pop

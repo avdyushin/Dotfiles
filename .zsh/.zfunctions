@@ -102,13 +102,13 @@ function git-upstream-status() {
 
 function git-prompt() {
     branch="$(git-branch)" || return
-    color_branch="%F{240} ${branch}%f"
+    color_branch="%F{240} \e[3m${branch}\e[0m%f"
     echo "${color_branch}%F{240}$(git-file-status)%f %F{236}$(git-upstream-status)%f"
 }
 
 function base-prompt() {
-    color_user="%F{4}%n%f"
-    color_host="%F{3}%m%f"
+    color_user="%F{4}\e[3m%n\e[0m%f"
+    color_host="%F{3}\e[3m%m\e[0m%f"
     color_path="%F{2}%~%f"
     echo "${color_user}  ${color_host} ${color_path}"
 }

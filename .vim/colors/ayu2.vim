@@ -14,20 +14,20 @@ hi CursorLineNr guifg=#F29718 guibg=#191E22 gui=none ctermfg=none ctermbg=234  c
 hi LineNr       guifg=#2D3640 guibg=NONE    gui=none ctermfg=238
 hi ColorColumn  guifg=NONE    guibg=#151A1E gui=none ctermfg=none ctermbg=none cterm=none
 
-hi Comment      guifg=#5C6773 guibg=NONE    gui=italic ctermfg=244 ctermbg=none cterm=italic
-hi Constant     guifg=#FFEE99 guibg=NONE    gui=none ctermfg=221
-hi String       guifg=#B8CC52 guibg=NONE    gui=italic ctermfg=148 ctermbg=none cterm=italic
-hi Identifier   guifg=#36A3D9 guibg=NONE    gui=none ctermfg=148
-hi Function     guifg=#FFB454 guibg=NONE    gui=none ctermfg=214
-hi Statement    guifg=#FF7733 guibg=NONE    gui=italic ctermfg=208 ctermbg=none cterm=italic
-hi Operator     guifg=#E7C547 guibg=NONE    gui=none ctermfg=214
-hi PreProc      guifg=#E6B673 guibg=NONE    gui=none ctermfg=222
-hi Type         guifg=#36A3D8 guibg=NONE    gui=none ctermfg=45
-hi Structure    guifg=#E6B673 guibg=NONE    gui=none ctermfg=208
-hi Keyword      guifg=#E6B673 guibg=NONE    gui=italic ctermfg=45 ctermbg=none cterm=italic
-hi Special      guifg=#E6B673 guibg=NONE    gui=none ctermfg=244
-hi Undefined    guifg=#36A3D9 guibg=NONE    gui=none ctermfg=208
-hi Todo         guifg=#F07178 guibg=NONE    gui=none ctermfg=211  ctermbg=0    cterm=none
+hi Comment      guifg=#5C6773 guibg=NONE    gui=italic    ctermfg=244 ctermbg=none cterm=italic
+hi Constant     guifg=#FFEE99 guibg=NONE    gui=none      ctermfg=221
+hi String       guifg=#B8CC52 guibg=NONE    gui=italic    ctermfg=148 ctermbg=none cterm=italic
+hi Identifier   guifg=#36A3D9 guibg=NONE    gui=none      ctermfg=148
+hi Function     guifg=#FFB454 guibg=NONE    gui=none      ctermfg=214
+hi Statement    guifg=#FF7733 guibg=NONE    gui=italic    ctermfg=208 ctermbg=none cterm=italic
+hi Operator     guifg=#E7C547 guibg=NONE    gui=none      ctermfg=214
+hi PreProc      guifg=#E6B673 guibg=NONE    gui=none      ctermfg=222
+hi Type         guifg=#36A3D8 guibg=NONE    gui=none      ctermfg=45
+hi Structure    guifg=#E6B673 guibg=NONE    gui=none      ctermfg=208
+hi Keyword      guifg=#E6B673 guibg=NONE    gui=italic    ctermfg=45  ctermbg=none cterm=italic
+hi Special      guifg=#E6B673 guibg=NONE    gui=none      ctermfg=244
+hi Undefined    guifg=#36A3D9 guibg=NONE    gui=none      ctermfg=208
+hi Todo         guifg=#F07178 guibg=NONE    gui=italic    ctermfg=211 ctermbg=none cterm=italic
 hi SpellBad     guifg=#F00000 guibg=NONE    gui=undercurl ctermfg=009 ctermbg=none cterm=undercurl
 
 " Matched parent color

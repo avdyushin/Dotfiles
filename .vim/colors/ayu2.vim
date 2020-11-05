@@ -16,15 +16,15 @@ hi ColorColumn  guifg=NONE    guibg=#151A1E gui=none ctermfg=none ctermbg=none c
 
 hi Comment      guifg=#5C6773 guibg=NONE    gui=italic ctermfg=244 ctermbg=none cterm=italic
 hi Constant     guifg=#FFEE99 guibg=NONE    gui=none ctermfg=221
-hi String       guifg=#B8CC52 guibg=NONE    gui=none ctermfg=148
+hi String       guifg=#B8CC52 guibg=NONE    gui=italic ctermfg=148 ctermbg=none cterm=italic
 hi Identifier   guifg=#36A3D9 guibg=NONE    gui=none ctermfg=148
 hi Function     guifg=#FFB454 guibg=NONE    gui=none ctermfg=214
-hi Statement    guifg=#FF7733 guibg=NONE    gui=none ctermfg=208
+hi Statement    guifg=#FF7733 guibg=NONE    gui=italic ctermfg=208 ctermbg=none cterm=italic
 hi Operator     guifg=#E7C547 guibg=NONE    gui=none ctermfg=214
 hi PreProc      guifg=#E6B673 guibg=NONE    gui=none ctermfg=222
 hi Type         guifg=#36A3D8 guibg=NONE    gui=none ctermfg=45
 hi Structure    guifg=#E6B673 guibg=NONE    gui=none ctermfg=208
-hi Keyword      guifg=#E6B673 guibg=NONE    gui=none ctermfg=45
+hi Keyword      guifg=#E6B673 guibg=NONE    gui=italic ctermfg=45 ctermbg=none cterm=italic
 hi Special      guifg=#E6B673 guibg=NONE    gui=none ctermfg=244
 hi Undefined    guifg=#36A3D9 guibg=NONE    gui=none ctermfg=208
 hi Todo         guifg=#F07178 guibg=NONE    gui=none ctermfg=211  ctermbg=0    cterm=none
@@ -37,7 +37,7 @@ hi MatchParen   guifg=#0F1419 guibg=#B6B1BF gui=italic ctermfg=157  ctermbg=237 
 hi Pmenu        guifg=#ffffff guibg=#444444 gui=none ctermfg=255  ctermbg=238
 hi PmenuSel     guifg=#000000 guibg=#B8CC52 gui=none ctermfg=0    ctermbg=148
 
-hi Search       guifg=#0F1419 guibg=#FFEE99 gui=italic ctermfg=0  ctermbg=148  cterm=italic
+hi Search       guifg=#0F1419 guibg=#FFEE99 gui=none ctermfg=0  ctermbg=148  cterm=none
 hi StatusLine   guifg=#E6E1CF guibg=#14191F gui=none ctermfg=230  ctermbg=234  cterm=none
 hi StatusLineNC guifg=#2D3640 guibg=#14191F gui=none ctermfg=246  ctermbg=234  cterm=none
 hi VertSplit    guifg=#2D3640 guibg=NONE    gui=none ctermfg=238  ctermbg=none cterm=none

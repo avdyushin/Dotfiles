@@ -1,25 +1,47 @@
 "
 " My .vimrc
 "
+" Reload .vimrc :source $MYVIMRC
+"
+
+" Set encoding
 scriptencoding utf-8
 set encoding=utf-8
-
+" Disable mode lines for security reasons
 set nomodeline
-
 " Turn off Vi-compatible mode
 set nocompatible
 " Turn off audio bell
 set visualbell
 " Turn off visual bell
 set belloff=all
+
+" Set <Leader> for commands
+let mapleader = ","
+
+" Backspace <BS> allowance
+" indent - backspacing over autoindent
+" oel - backspacing over line break (join lines)
+" start - backspacing over start of insert
 "
-set backspace=indent,eol,start
+" If oel is not set, join lines with: gJ command
+"
+"set backspace=indent,eol,start
+set backspace=
+" Delete characters with <BS>
+nnoremap <BS> X
+" Jump to the last position when reopening file
+if has("autocmd")
+    au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+                \| exe "normal! g'\"" | endif
+endif
 
 if has('clipboard')
     set clipboard=unnamed
 endif
 
 " Show line numbers
+" To hide line numbers use command: set nonumber / set nonu
 set number
 " Select with mouse
 "set mouse+=a
@@ -40,10 +62,35 @@ set timeoutlen=1000
 " Timeout for key code delays
 set ttimeoutlen=10
 
-" Turn off swap and backup files
-set noswapfile
-set nobackup
-set nowb
+" Turn off swap files
+"set noswapfile
+" Immediately delete backup files
+"set nobackup
+" Don't create backup before writing, this option overriden by backup below
+"set nowritebackup
+
+" Turn on swap files
+" To avoid creaing too much swap files open them in read-only mode:
+" vim -R <file>, or view <file>
+set swapfile
+" Keep all swap files in one place
+set directory^=$HOME/.vim/tmp//
+" Create backup before writing and keep backup files (will be overwritten on future backups)
+set backup
+" Keep all backups in given place
+set backupdir^=$HOME/.vim/tmp//
+
+" Persistent undo across sessions
+set undofile
+set undodir^=$HOME/.vim/tmp//
+" Undo points
+" By default undo reverts everything since entering intert mode
+inoremap <Enter> <Enter><C-g>u
+inoremap . .<C-g>u
+inoremap , ,<C-g>u
+inoremap ; ;<C-g>u
+inoremap ! !<C-g>U
+inoremap ? ?<C-g>U
 
 " To replace all tabs to space in opened file, just run:
 " :%retab
@@ -66,9 +113,49 @@ set list
 set listchars=tab:—-,trail:·,precedes:⇇,extends:⇉,nbsp:␣,eol:¬
 set fillchars=fold:—,vert:\|
 
-" Turn off wrap
-set nowrap
-set nolinebreak
+
+" In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.
+
+function NoWrap()
+    " Turn off wrap
+    set nowrap
+    " Break lines by character
+    set nolinebreak
+    unmap j
+    unmap k
+endfunction
+
+function Wrap()
+    " Turn on wrap
+    set wrap
+    " Break lines by words
+    set linebreak
+    " Go to the next character visually below current one
+    nnoremap <expr> j v:count ? 'j' : 'gj'
+    " Go to the next character visually above current one
+    nnoremap <expr> k v:count ? 'k' : 'gk'
+endfunction
+
+menu Wrap.Enable :call Wrap()<Enter>
+menu Wrap.Disable :call NoWrap()<Enter>
+
+call Wrap()
+
+nnoremap <Leader>w :emenu Wrap.<Tab>
+
+" Spelling
+"set spell
+" Off by default
+set nospell
+" Spelling menu
+menu Spelling.Enable  :setlocal spell spelllang=en,nl,ru<Enter>
+menu Spelling.Disable :setlocal nospell<Enter>
+menu Spelling.Russian :setlocal spell spelllang=ru<Enter>
+menu Spelling.English :setlocal spell spelllang=en<Enter>
+menu Spelling.Dutch   :setlocal spell spelllang=nl<Enter>
+" Spelling menu key binding
+nnoremap <Leader>s :emenu Spelling.<Tab>
+
 set formatoptions-=t
 
 " Turn on folding
@@ -124,11 +211,11 @@ au BufEnter,BufWritePost,FileWritePost * call utils#file_status()
 " Unfold all blocks
 au BufEnter * normal zR
 " Blink current line on focus
-au FocusGained * call utils#blink_line()
+"au FocusGained * call utils#blink_line()
 " Quick fix window
 au QuickFixCmdPost * nested cwindow
 " Templates
-au BufNewFile * silent! 0r $HOME/.vim/templates/skeleton.%:e
+"au BufNewFile * silent! 0r $HOME/.vim/templates/skeleton.%:e
 
 " Status line
 set laststatus=2
@@ -155,12 +242,7 @@ set wildmenu
 "set wildmode=list:full
 
 set wcm=<Tab>
-" Spelling menu
-menu Spelling.Disable           :setlocal nospell<Enter>
-menu Spelling.English,\ Russian :setlocal spell spelllang=en,ru<Enter>
-menu Spelling.Russian           :setlocal spell spelllang=ru<Enter>
-menu Spelling.English           :setlocal spell spelllang=en<Enter>
 
-if filereadable(expand("$HOME/.vimrc_map"))
-    source $HOME/.vimrc_map
+if filereadable(expand("$HOME/.vim/keymaps.vim"))
+    source $HOME/.vim/keymaps.vim
 endif

@@ -5,17 +5,14 @@ cabbrev й q
 cabbrev ц w
 cabbrev цй wq
 
-" Set leader for commands
-let mapleader = ","
-
 " -- INSERT --
 
 " Show next completion
-" inoremap <Tab> <C-r>=utils#smart_tab()<Enter>
+"inoremap <Tab> <C-r>=utils#smart_tab()<Enter>
 " Show previous completion
-" inoremap <S-Tab> <C-n>
+"inoremap <S-Tab> <C-n>
 " Autocomplete tags
-inoremap <lt>/ </<C-x><C-o><Esc>==gi
+"inoremap <lt>/ </<C-x><C-o><Esc>==gi
 
 " -- NORMAL --
 
@@ -28,31 +25,31 @@ nnoremap <Down>  :n <Enter>
 " Make search result in the middle of the screen
 nnoremap n nzz
 nnoremap N Nzz
+" Clear search
+nnoremap <Esc><Esc> :let @/ = ""<Enter>
 
 " Go to next split window
 nnoremap <S-Tab> <C-w>w
 " Go to latest changes
 nnoremap gV `[v`]
 " Edit .vimrc
-nnoremap <leader>ev :vsp $MYVIMRC<Enter>
+nnoremap <Leader>ev :vsp $MYVIMRC<Enter>
 " Edit .zshrc
-nnoremap <leader>ez :vsp ~/.zshrc<Enter>
+nnoremap <Leader>ez :vsp ~/.zshrc<Enter>
 " Reload .vimrc in current buffer
-nnoremap <leader>sv :source $MYVIMRC<Enter>
+nnoremap <Leader>sv :source $MYVIMRC<Enter> \| :echom expand("$MYVIMRC") "has been reloaded"<Enter>
 " Save and make
-nnoremap <leader>r :make<Enter>
+nnoremap <Leader>r :make<Enter>
 " Wrap word with quotes
-nnoremap <leader>" mzviw<Esc>a"<Esc>bi"<Esc>`zl
+nnoremap <Leader>" mzviw<Esc>a"<Esc>bi"<Esc>`zl
 " Lowercase word
-nnoremap <leader>u mzguaw`z
+nnoremap <Leader>u mzguaw`z
 " Uppercase word
-nnoremap <leader>U mzgUaw`z
+nnoremap <Leader>U mzgUaw`z
 " Indent whole file
-nnoremap <leader>ai mzgg=G`z
+nnoremap <Leader>ai mzgg=G`z
 " Clear search highlight on \
-nnoremap <leader>, :noh<Enter>
-" Spelling menu
-nnoremap <leader>s :emenu Spelling.<Tab>
+"nnoremap <Leader>, :noh<Enter>
 " Move one word back
 nnoremap <silent> <C-Left> b
 " Move one work forward
@@ -73,6 +70,6 @@ vnoremap K :m '<-2<Enter>gv=gv
 " Move visually selected lines down
 vnoremap J :m '>+1<Enter>gv=gv
 " Most recent files
-nnoremap <leader>o :MRU<Enter>
+nnoremap <Leader>o :MRU<Enter>
 " Execure last command again
-nnoremap <leader>. :!!<Enter>
+nnoremap <Leader>. :!!<Enter>

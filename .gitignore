@@ -1,2 +1,4 @@
+*~
+.vim/tmp
 .vim/.netrwhist
 .ghc/ghci_history

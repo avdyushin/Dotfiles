@@ -29,12 +29,24 @@ let mapleader = ","
 "set backspace=indent,eol,start
 set backspace=
 " Delete characters with <BS>
-nnoremap <BS> X
-" Jump to the last position when reopening file
-if has("autocmd")
-    au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-                \| exe "normal! g'\"" | endif
-endif
+"nnoremap <BS> X
+" Move back by work with <BS>
+nnoremap <BS> b
+
+" Jump to the last line when reopening file
+"if has("autocmd")
+"    au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+"                \| exe "normal! g'\"" | endif
+"endif
+
+" Automatic sessions
+" Will open last posisiton when reopenning files
+" Specify where session scripts are stored
+set viewdir=$HOME/.vim/tmp//
+" Make session on buffer leave
+au BufWinLeave *.* mkview
+" Load session on buffer enter
+au BufWinEnter *.* silent loadview
 
 if has('clipboard')
     set clipboard=unnamed
@@ -92,13 +104,13 @@ inoremap ; ;<C-g>u
 inoremap ! !<C-g>U
 inoremap ? ?<C-g>U
 
-" To replace all tabs to space in opened file, just run:
+" To replace all tabs to spaces in the opened file, just run:
 " :%retab
 " Indents will have a width of 2
 set shiftwidth=4
 " Number of columns for a tab
 set softtabstop=4
-" The width of tab is 2
+" The width of tab is 4
 set tabstop=4
 " Expand tabs to spaces
 set expandtab
@@ -113,10 +125,7 @@ set list
 set listchars=tab:—-,trail:·,precedes:⇇,extends:⇉,nbsp:␣,eol:¬
 set fillchars=fold:—,vert:\|
 
-
-" In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.
-
-function NoWrap()
+function WrappingDisable()
     " Turn off wrap
     set nowrap
     " Break lines by character
@@ -125,7 +134,7 @@ function NoWrap()
     unmap k
 endfunction
 
-function Wrap()
+function WrappingEnable()
     " Turn on wrap
     set wrap
     " Break lines by words
@@ -136,10 +145,10 @@ function Wrap()
     nnoremap <expr> k v:count ? 'k' : 'gk'
 endfunction
 
-menu Wrap.Enable :call Wrap()<Enter>
-menu Wrap.Disable :call NoWrap()<Enter>
+menu Wrapping.Enable  :call WrappingEnable()<Enter>
+menu Wrapping.Disable :call WrappingDisable()<Enter>
 
-call Wrap()
+call WrappingEnable()
 
 nnoremap <Leader>w :emenu Wrap.<Tab>
 

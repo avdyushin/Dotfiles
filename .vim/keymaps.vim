@@ -26,7 +26,8 @@ nnoremap <Down>  :n <Enter>
 nnoremap n nzz
 nnoremap N Nzz
 " Clear search
-nnoremap <Esc><Esc> :let @/ = ""<Enter>
+"nnoremap <Esc><Esc> :let @/ = ""<Enter>
+nnoremap <Esc><Esc> :noh<Enter>
 
 " Go to next split window
 nnoremap <S-Tab> <C-w>w

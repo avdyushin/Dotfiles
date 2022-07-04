@@ -45,7 +45,7 @@ let g:has_trailing_spaces = ''
 function! utils#trailing_spaces()
   let line = search('\s$', 'nw')
   if line != 0
-    let g:has_trailing_spaces = '·' . line . ' '
+    let g:has_trailing_spaces = ' !' . line
   else
     let g:has_trailing_spaces = ''
   endif

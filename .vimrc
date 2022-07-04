@@ -104,6 +104,12 @@ inoremap ; ;<C-g>u
 inoremap ! !<C-g>U
 inoremap ? ?<C-g>U
 
+" Split behaviour
+" sp <filename> will open in bottom view
+set splitbelow
+" vsp <filename> will open in right view
+set splitright
+
 " To replace all tabs to spaces in the opened file, just run:
 " :%retab
 " Indents will have a width of 2
@@ -150,9 +156,13 @@ menu Wrapping.Disable :call WrappingDisable()<Enter>
 
 call WrappingEnable()
 
+nnoremap <Leader>ws :/\s$<Enter>
 nnoremap <Leader>w :emenu Wrap.<Tab>
 
 " Spelling
+" ]s - next misspelled word
+" [s - previous misspelled word
+" z= - show suggestions
 "set spell
 " Off by default
 set nospell
@@ -192,8 +202,8 @@ let &t_SI="\033[3 q" " start insert mode, blinking underline cursor
 let &t_EI="\033[1 q" " end insert mode, blinking block
 
 " Add color columns to make it visible
-" let &colorcolumn="80,".join(range(120,999),",")
-let &colorcolumn=join(range(120,999),",")
+"let &colorcolumn="80,".join(range(120,999),",")
+"let &colorcolumn=join(range(120,999),",")
 
 " Completion
 set omnifunc=syntaxcomplete#Complete
@@ -237,18 +247,19 @@ set statusline+=\ %=
 set statusline+=%#User1#
 set statusline+=%{g:git_branch_name}
 set statusline+=%*
-set statusline+=%#User3#
-set statusline+=%{g:has_trailing_spaces}
-set statusline+=%*
 " set statusline+=%2B
 set statusline+=%c/%L\ %p%%
+set statusline+=%*
+set statusline+=%#User3#
+set statusline+=%{g:has_trailing_spaces}
 
 " Find path
 set path=.,**
 " Menus
 set wildmenu
-"set wildignorecase
-"set wildmode=list:full
+set wildignorecase
+" Menu suggestions / completion
+set wildmode=longest:full
 
 set wcm=<Tab>
 

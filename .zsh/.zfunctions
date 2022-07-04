@@ -47,7 +47,7 @@ function git-remote-name() {
 
 function git-create-branch() {
     if [[ $# -eq 2 ]]; then
-        git checkout -b "$USER/$1/$2"
+        git checkout -b "$1/$2"
     else
         echo "Usage: $0 type name" >&2
     fi

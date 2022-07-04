@@ -3,6 +3,7 @@ case `uname` in
         alias ls="ls -hG"
         alias ll="ls -hGla"
         alias l="ls -hGla"
+        alias lsusb="ioreg -p IOUSB -l -w 0"
         ;;
     Linux)
         alias ls="ls --color -hG"
@@ -22,8 +23,9 @@ alias main_branch="git symbolic-ref refs/remotes/origin/HEAD  | sed 's@^refs/rem
 alias last_commit="git rev-parse --short HEAD"
 
 # Git create branches
-alias fix="git-create-branch fixes"
-alias issue="git-create-branch issues"
+alias fix="git-create-branch fix"
+alias bugfix="git-create-branch bugfix"
+alias hotfix="git-create-branch hotfix"
 alias feature="git-create-branch feature"
 
 alias ungron="gron --ungron"

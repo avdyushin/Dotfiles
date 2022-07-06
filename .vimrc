@@ -1,5 +1,6 @@
 " Set encoding
 scriptencoding utf-8
+
 set encoding=utf-8
 " Disable mode lines for security reasons
 set nomodeline
@@ -12,17 +13,6 @@ set belloff=all
 
 " Set <Leader> for commands
 let mapleader = ","
-
-" Smart Backspace in normal mode
-" If at the beginning of the line will join to previous
-" else will delete character
-function SmartBackspace()
-    if virtcol('.') == 1
-        execute "normal kJ"
-    else
-        execute "normal X"
-    endif
-endfunction
 
 " Backspace <BS> allowance
 " indent - backspacing over autoindent
@@ -37,7 +27,7 @@ set backspace=eol
 "nnoremap <BS> X
 " Move back by work with <BS>
 "nnoremap <Backspace> b
-nnoremap <Backspace> :call SmartBackspace()<CR>
+nnoremap <Backspace> :call backspace#smart_backspace()<CR>
 nnoremap <S-Backspace> x
 
 " <Enter>/<CR> behaviour
@@ -49,13 +39,6 @@ nnoremap <CR> o<Esc>
 "nnoremap <S-CR> i<CR><Esc>
 " In terminal: ^M = Ctrl+V + Shift+Enter
 "nnoremap  i<CR><Esc>
-
-" Jump to the last line when reopening file
-" Better solution is to user Sessions/Views, see below
-"if has("autocmd")
-"    au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-"                \| exe "normal! g'\"" | endif
-"endif
 
 if has('clipboard')
     set clipboard=unnamed
@@ -122,10 +105,6 @@ set viewdir=$HOME/.vim/tmp//
 " This is important to have modeline work together with view sessions
 set viewoptions-=options
 set sessionoptions-=options
-" Make session on buffer leave
-au BufWinLeave *.* mkview
-" Load session on buffer enter
-au BufWinEnter *.* silent loadview
 
 " Split behaviour
 " sp <filename> will open in bottom view
@@ -134,7 +113,7 @@ set splitbelow
 set splitright
 
 " Reload configuration on .vimrc save
-au! BufWritePost $MYVIMRC source %
+"au! BufWritePost $MYVIMRC source %
 
 " To replace all tabs to spaces in the opened file, just run:
 " :%retab
@@ -157,22 +136,6 @@ set list
 set listchars=tab:—-,trail:·,precedes:⇇,extends:⇉,nbsp:␣,eol:¬
 set fillchars=fold:—,vert:\|
 
-" Toggle wrapping with line breaks
-function ToggleWrapping()
-    if &wrap == 0
-        " Turn on wrap
-        setlocal wrap
-        " Break lines by words
-        setlocal linebreak
-    else
-        " Turn off wrap
-        setlocal nowrap
-        " Break lines by character
-        setlocal nolinebreak
-    endif
-    echo 'Wrapping had been ' . (&wrap ? 'enabled' : 'disabled')
-endfunction
-
 " Wrap mode helpers
 
 " Go to the next character visually below current one
@@ -180,54 +143,26 @@ nnoremap <expr> j v:count ? 'j' : 'gj'
 " Go to the next character visually above current one
 nnoremap <expr> k v:count ? 'k' : 'gk'
 " Keymap to toggle wrapping
-nnoremap <Leader>w :call ToggleWrapping()<CR>
+nnoremap <Leader>w :call wrapping#toggle()<CR>
 
 " Search for trailing whitespaces
 nnoremap <Leader>ws :/\s$<Enter>
 
-" Spelling
-" ]s - next misspelled word
-" [s - previous misspelled word
-" z= - show suggestions
-" zg - add word as 'good' into spellfile
-" zw - add word as 'wrong' into spellfile
+if has("spell")
+    " Spelling
+    set nospell
+    set spellfile=./user.utf-8.add
 
-function ToggleSpelling()
-    if &spell == 0
-        setlocal spell
-    else
-        setlocal nospell
-    endif
-    call LogSpelling()
-endfunction
+    " Spelling menu
+    menu Spelling.Toggle  :call spelling#toggle()<CR>
+    menu Spelling.English :call spelling#set('en')<CR>
+    menu Spelling.Russian :call spelling#set('ru')<CR>
+    menu Spelling.Dutch   :call spelling#set('nl')<CR>
+    menu Spelling.All     :call spelling#set('en', 'ru', 'nl')<CR>
 
-function SetSpelling(...)
-    setlocal spell
-    setlocal spelllang=
-    " Same as execute 'setlocal spelllang+=' . join(a:000, ',')
-    let &l:spelllang .= join(a:000, ',')
-    call LogSpelling()
-endfunction
-
-function LogSpelling()
-    echo 'Spelling ' . &spelllang . ' has been ' . (&spell == 1 ? 'enabled' : 'disabled')
-endfunction
-
-"set spell
-" Off by default
-set nospell
-set spellfile=./user.utf-8.add
-
-" Spelling menu
-menu Spelling.Toggle  :call ToggleSpelling()<CR>
-menu Spelling.English :call SetSpelling('en')<CR>
-menu Spelling.Russian :call SetSpelling('ru')<CR>
-menu Spelling.Dutch   :call SetSpelling('nl')<CR>
-menu Spelling.All     :call SetSpelling('en', 'ru', 'nl')<CR>
-
-" Spelling menu key binding
-nnoremap <Leader>s :emenu Spelling.<Tab><Tab>
-nnoremap <Leader>sp :call ToggleSpelling(langs)<CR>
+    " Spelling menu key binding
+    nnoremap <Leader>s :emenu Spelling.<Tab><Tab>
+endif
 
 " Modelines
 set modeline
@@ -241,18 +176,23 @@ set formatoptions+=j
 set formatoptions+=o
 
 " Folding
-" Turn on folding
-set foldmethod=manual
-" And turn off
-set nofoldenable
+if has("folding")
+    " Turn on folding
+    set foldmethod=manual
+    " And turn off
+    set nofoldenable
+endif
 
 " Turn on syntax
-syntax on
+if has("syntax")
+    syntax on
+endif
+
 filetype plugin on
 filetype indent on
 
 " Set color scheme
-colorscheme ayu2
+colorscheme ayu
 
 " Set 256 colors
 set t_Co=256
@@ -286,20 +226,6 @@ set hlsearch
 set ignorecase
 set smartcase
 
-" Update trailing space warnings
-au BufEnter,BufWritePost,CursorHold * call utils#trailing_spaces()
-" Update git branch and status
-au BufEnter,BufWritePost,FileWritePost * call utils#branch_name()
-au BufEnter,BufWritePost,FileWritePost * call utils#file_status()
-" Unfold all blocks
-au BufEnter * normal zR
-" Blink current line on focus
-"au FocusGained * call utils#blink_line()
-" Quick fix window
-au QuickFixCmdPost * nested cwindow
-" Templates
-"au BufNewFile * silent! 0r $HOME/.vim/templates/skeleton.%:e
-
 " Status line
 set laststatus=2
 
@@ -329,11 +255,3 @@ set wildmode=longest:full,full
 set wildignorecase
 set wildchar=<Tab>
 set wildcharm=<Tab>
-
-if filereadable(expand("$HOME/.vim/keymaps.vim"))
-    source $HOME/.vim/keymaps.vim
-endif
-
-if filereadable(expand('$HOME/.vimrc_local'))
-    source $HOME/.vimrc_local
-endif

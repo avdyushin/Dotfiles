@@ -1,7 +1,3 @@
-"
-" My .vimrc
-"
-
 " Set encoding
 scriptencoding utf-8
 set encoding=utf-8
@@ -20,7 +16,7 @@ let mapleader = ","
 " Smart Backspace in normal mode
 " If at the beginning of the line will join to previous
 " else will delete character
-function! s:SmartBackspace()
+function SmartBackspace()
     if virtcol('.') == 1
         execute "normal kJ"
     else
@@ -41,7 +37,7 @@ set backspace=eol
 "nnoremap <BS> X
 " Move back by work with <BS>
 "nnoremap <Backspace> b
-nnoremap <Backspace> :call <SID>SmartBackspace()<CR>
+nnoremap <Backspace> :call SmartBackspace()<CR>
 nnoremap <S-Backspace> x
 
 " <Enter>/<CR> behaviour
@@ -87,10 +83,10 @@ set ttimeoutlen=10
 "set noswapfile
 " Immediately delete backup files
 "set nobackup
-" Don't create backup before writing, this option overriden by backup below
+" Don't create backup before writing, this option overridden by backup below
 "set nowritebackup
 " Turn on swap files
-" To avoid creaing too much swap files open them in read-only mode:
+" To avoid creating too much swap files open them in read-only mode:
 " vim -R <file>, or view <file>
 set swapfile
 " Keep all swap files in one place
@@ -104,7 +100,7 @@ set backupdir^=$HOME/.vim/tmp//
 set undofile
 set undodir^=$HOME/.vim/tmp//
 " Undo points
-" By default undo reverts everything since entering intert mode
+" By default undo reverts everything since entering insert mode
 inoremap <Enter> <Enter><C-g>u
 inoremap . .<C-g>u
 inoremap , ,<C-g>u
@@ -118,9 +114,11 @@ set autoread
 set autowriteall
 
 " Automatic sessions
-" Will open last posisiton when reopenning files
+" Will open last position when reopening files
 " Specify where session scripts are stored
 set viewdir=$HOME/.vim/tmp//
+" This is important to have modeline work together with view sessions
+set viewoptions-=options
 " Make session on buffer leave
 au BufWinLeave *.* mkview
 " Load session on buffer enter
@@ -157,30 +155,29 @@ set listchars=tab:—-,trail:·,precedes:⇇,extends:⇉,nbsp:␣,eol:¬
 set fillchars=fold:—,vert:\|
 
 " Toggle wrapping with line breaks
-function ToggleWrap()
+function ToggleWrapping()
     if &wrap == 0
         " Turn on wrap
-        set wrap
+        setlocal wrap
         " Break lines by words
-        set linebreak
-        " Go to the next character visually below current one
-        nnoremap <expr> j v:count ? 'j' : 'gj'
-        " Go to the next character visually above current one
-        nnoremap <expr> k v:count ? 'k' : 'gk'
-        echo 'Wrapping enabled'
+        setlocal linebreak
     else
         " Turn off wrap
-        set nowrap
+        setlocal nowrap
         " Break lines by character
-        set nolinebreak
-        " Reset default mappings
-        unmap j
-        unmap k
-        echo 'Wrapping disabled'
+        setlocal nolinebreak
     endif
+    echo 'Wrapping had been ' . (&wrap ? 'enabled' : 'disabled')
 endfunction
 
-nnoremap <Leader>w :call ToggleWrap()<CR>
+" Wrap mode helpers
+
+" Go to the next character visually below current one
+nnoremap <expr> j v:count ? 'j' : 'gj'
+" Go to the next character visually above current one
+nnoremap <expr> k v:count ? 'k' : 'gk'
+" Keymap to toggle wrapping
+nnoremap <Leader>w :call ToggleWrapping()<CR>
 
 " Search for trailing whitespaces
 nnoremap <Leader>ws :/\s$<Enter>
@@ -189,20 +186,52 @@ nnoremap <Leader>ws :/\s$<Enter>
 " ]s - next misspelled word
 " [s - previous misspelled word
 " z= - show suggestions
+" zg - add word as 'good' into spellfile
+" zw - add word as 'wrong' into spellfile
+
+function ToggleSpelling()
+    if &spell == 0
+        setlocal spell
+    else
+        setlocal nospell
+    endif
+    call LogSpelling()
+endfunction
+
+function SetSpelling(...)
+    setlocal spell
+    setlocal spelllang=
+    " Same as execute 'setlocal spelllang+=' . join(a:000, ',')
+    let &l:spelllang .= join(a:000, ',')
+    call LogSpelling()
+endfunction
+
+function LogSpelling()
+    echo 'Spelling ' . &spelllang . ' has been ' . (&spell == 1 ? 'enabled' : 'disabled')
+endfunction
+
 "set spell
 " Off by default
 set nospell
+set spellfile=./user.utf-8.add
+
 " Spelling menu
-menu Spelling.Enable  :setlocal spell spelllang=en,nl,ru<Enter>
-menu Spelling.Disable :setlocal nospell<Enter>
-menu Spelling.Russian :setlocal spell spelllang=ru<Enter>
-menu Spelling.English :setlocal spell spelllang=en<Enter>
-menu Spelling.Dutch   :setlocal spell spelllang=nl<Enter>
+menu Spelling.Toggle  :call ToggleSpelling()<CR>
+menu Spelling.English :call SetSpelling('en')<CR>
+menu Spelling.Russian :call SetSpelling('ru')<CR>
+menu Spelling.Dutch   :call SetSpelling('nl')<CR>
+menu Spelling.All     :call SetSpelling('en', 'ru', 'nl')<CR>
+
 " Spelling menu key binding
-nnoremap <Leader>s :emenu Spelling.<Tab>
+nnoremap <Leader>s :emenu Spelling.<Tab><Tab>
+nnoremap <Leader>sp :call ToggleSpelling(langs)<CR>
+
+" Modelines
+set modeline
 
 set formatoptions-=t
 
+" Folding
 " Turn on folding
 set foldmethod=manual
 " And turn off
@@ -281,11 +310,15 @@ set statusline+=%{g:has_trailing_spaces}
 
 " Find path
 set path=.,**
-" Menus
+
+" Menus, cycle through using <Tab> and <S-Tab>
+" Allow <Left> and <Right> to navigate through the completion lists
 set wildmenu
+" First <Tab> will complete to the longest common string and will show menu
+" Second <Tab> it will complete the first alternative
+set wildmode=longest:full,full
 set wildignorecase
-" Menu suggestions / completion
-set wildmode=longest:full
+set wildchar=<Tab>
 set wildcharm=<Tab>
 
 if filereadable(expand("$HOME/.vim/keymaps.vim"))

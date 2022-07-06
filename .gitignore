@@ -1,4 +1,5 @@
 *~
 .vim/tmp
+.vim/pack/my/start/utils/plugin/local.vim
 .vim/.netrwhist
 .ghc/ghci_history

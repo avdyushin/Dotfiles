@@ -76,12 +76,12 @@ nnoremap B ^
 nnoremap <silent> <C-e> $
 nnoremap E $
 " Move line up
-nnoremap K :m .-2<Enter>==
+nnoremap <Leader>K :m .-2<Enter>==
 " Move line down
-nnoremap J :m .+1<Enter>==
+nnoremap <Leader>J :m .+1<Enter>==
 " Move visually selected lines up
-vnoremap K :m '<-2<Enter>gv=gv
+vnoremap <Leader>K :m '<-2<Enter>gv=gv
 " Move visually selected lines down
-vnoremap J :m '>+1<Enter>gv=gv
+vnoremap <Leader>J :m '>+1<Enter>gv=gv
 " Execure last command again
 nnoremap <Leader>. :!!<Enter>

@@ -11,6 +11,9 @@ cabbrev цй wq
 " Show previous completion
 "inoremap <S-Tab> <C-n>
 
+" Inverse tab
+inoremap <S-Tab> <C-d>
+
 " Show completion on Ctrl + Space
 " In terminal <C-Space> gets interpreted as <C-@>
 inoremap <C-@> <C-n>

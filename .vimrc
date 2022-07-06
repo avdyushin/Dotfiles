@@ -105,8 +105,10 @@ inoremap <Enter> <Enter><C-g>u
 inoremap . .<C-g>u
 inoremap , ,<C-g>u
 inoremap ; ;<C-g>u
-inoremap ! !<C-g>U
-inoremap ? ?<C-g>U
+inoremap ! !<C-g>u
+inoremap ? ?<C-g>u
+inoremap <C-w> <C-g>u<C-w>
+inoremap <C-u> <C-g>u<C-u>
 
 " Reload file on changes
 set autoread
@@ -119,6 +121,7 @@ set autowriteall
 set viewdir=$HOME/.vim/tmp//
 " This is important to have modeline work together with view sessions
 set viewoptions-=options
+set sessionoptions-=options
 " Make session on buffer leave
 au BufWinLeave *.* mkview
 " Load session on buffer enter
@@ -229,7 +232,13 @@ nnoremap <Leader>sp :call ToggleSpelling(langs)<CR>
 " Modelines
 set modeline
 
+" Do not auto-wrap text
 set formatoptions-=t
+" Delete comment character when joining commented lines
+set formatoptions+=j
+" Insert comment character after adding new empty line below or above
+" o or O commands in normal mode
+set formatoptions+=o
 
 " Folding
 " Turn on folding
@@ -323,4 +332,8 @@ set wildcharm=<Tab>
 
 if filereadable(expand("$HOME/.vim/keymaps.vim"))
     source $HOME/.vim/keymaps.vim
+endif
+
+if filereadable(expand('$HOME/.vimrc_local'))
+    source $HOME/.vimrc_local
 endif

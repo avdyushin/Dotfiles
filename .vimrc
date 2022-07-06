@@ -1,8 +1,6 @@
 "
 " My .vimrc
 "
-" Reload .vimrc :source $MYVIMRC
-"
 
 " Set encoding
 scriptencoding utf-8
@@ -19,34 +17,49 @@ set belloff=all
 " Set <Leader> for commands
 let mapleader = ","
 
+" Smart Backspace in normal mode
+" If at the beginning of the line will join to previous
+" else will delete character
+function! s:SmartBackspace()
+    if virtcol('.') == 1
+        execute "normal kJ"
+    else
+        execute "normal X"
+    endif
+endfunction
+
 " Backspace <BS> allowance
 " indent - backspacing over autoindent
-" oel - backspacing over line break (join lines)
+" eol - backspacing over line break (join lines)
 " start - backspacing over start of insert
 "
-" If oel is not set, join lines with: gJ command
+" If eol is not set, join lines with: gJ command
 "
 "set backspace=indent,eol,start
-set backspace=
+set backspace=eol
 " Delete characters with <BS>
 "nnoremap <BS> X
 " Move back by work with <BS>
-nnoremap <BS> b
+"nnoremap <Backspace> b
+nnoremap <Backspace> :call <SID>SmartBackspace()<CR>
+nnoremap <S-Backspace> x
+
+" <Enter>/<CR> behaviour
+" Insert new line and return into normal mode
+nnoremap <CR> o<Esc>
+" Shift+Enter doesn't work in macOS Terminal out of the box
+" Break current line in current position
+" In GUI
+"nnoremap <S-CR> i<CR><Esc>
+" In terminal: ^M = Ctrl+V + Shift+Enter
+"nnoremap  i<CR><Esc>
 
 " Jump to the last line when reopening file
+" Better solution is to user Sessions/Views, see below
 "if has("autocmd")
 "    au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
 "                \| exe "normal! g'\"" | endif
 "endif
-
-" Automatic sessions
-" Will open last posisiton when reopenning files
-" Specify where session scripts are stored
-set viewdir=$HOME/.vim/tmp//
-" Make session on buffer leave
-au BufWinLeave *.* mkview
-" Load session on buffer enter
-au BufWinEnter *.* silent loadview
 
 if has('clipboard')
     set clipboard=unnamed
@@ -59,10 +72,6 @@ set number
 "set mouse+=a
 " Show line and column numbers
 " set ruler
-" Reload file on changes
-set autoread
-" Write file before :make (and other commands)
-set autowrite
 " Show entered command in last line
 set showcmd
 " Show mode (insert, visual) in last line
@@ -80,7 +89,6 @@ set ttimeoutlen=10
 "set nobackup
 " Don't create backup before writing, this option overriden by backup below
 "set nowritebackup
-
 " Turn on swap files
 " To avoid creaing too much swap files open them in read-only mode:
 " vim -R <file>, or view <file>
@@ -104,11 +112,28 @@ inoremap ; ;<C-g>u
 inoremap ! !<C-g>U
 inoremap ? ?<C-g>U
 
+" Reload file on changes
+set autoread
+" Write file before :make (and other commands or quit)
+set autowriteall
+
+" Automatic sessions
+" Will open last posisiton when reopenning files
+" Specify where session scripts are stored
+set viewdir=$HOME/.vim/tmp//
+" Make session on buffer leave
+au BufWinLeave *.* mkview
+" Load session on buffer enter
+au BufWinEnter *.* silent loadview
+
 " Split behaviour
 " sp <filename> will open in bottom view
 set splitbelow
 " vsp <filename> will open in right view
 set splitright
+
+" Reload configuration on .vimrc save
+au! BufWritePost $MYVIMRC source %
 
 " To replace all tabs to spaces in the opened file, just run:
 " :%retab
@@ -131,33 +156,34 @@ set list
 set listchars=tab:—-,trail:·,precedes:⇇,extends:⇉,nbsp:␣,eol:¬
 set fillchars=fold:—,vert:\|
 
-function WrappingDisable()
-    " Turn off wrap
-    set nowrap
-    " Break lines by character
-    set nolinebreak
-    unmap j
-    unmap k
+" Toggle wrapping with line breaks
+function ToggleWrap()
+    if &wrap == 0
+        " Turn on wrap
+        set wrap
+        " Break lines by words
+        set linebreak
+        " Go to the next character visually below current one
+        nnoremap <expr> j v:count ? 'j' : 'gj'
+        " Go to the next character visually above current one
+        nnoremap <expr> k v:count ? 'k' : 'gk'
+        echo 'Wrapping enabled'
+    else
+        " Turn off wrap
+        set nowrap
+        " Break lines by character
+        set nolinebreak
+        " Reset default mappings
+        unmap j
+        unmap k
+        echo 'Wrapping disabled'
+    endif
 endfunction
 
-function WrappingEnable()
-    " Turn on wrap
-    set wrap
-    " Break lines by words
-    set linebreak
-    " Go to the next character visually below current one
-    nnoremap <expr> j v:count ? 'j' : 'gj'
-    " Go to the next character visually above current one
-    nnoremap <expr> k v:count ? 'k' : 'gk'
-endfunction
+nnoremap <Leader>w :call ToggleWrap()<CR>
 
-menu Wrapping.Enable  :call WrappingEnable()<Enter>
-menu Wrapping.Disable :call WrappingDisable()<Enter>
-
-call WrappingEnable()
-
+" Search for trailing whitespaces
 nnoremap <Leader>ws :/\s$<Enter>
-nnoremap <Leader>w :emenu Wrap.<Tab>
 
 " Spelling
 " ]s - next misspelled word
@@ -260,8 +286,7 @@ set wildmenu
 set wildignorecase
 " Menu suggestions / completion
 set wildmode=longest:full
-
-set wcm=<Tab>
+set wildcharm=<Tab>
 
 if filereadable(expand("$HOME/.vim/keymaps.vim"))
     source $HOME/.vim/keymaps.vim

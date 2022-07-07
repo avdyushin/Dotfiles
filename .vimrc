@@ -185,7 +185,7 @@ endif
 
 " Turn on syntax
 if has("syntax")
-    syntax on
+    syntax enable
 endif
 
 filetype plugin on
@@ -210,7 +210,23 @@ let &t_EI="\033[1 q" " end insert mode, blinking block
 "let &colorcolumn=join(range(120,999),",")
 
 " Completion
+" <C-x><C-o>
 set omnifunc=syntaxcomplete#Complete
+
+" Completion options
+" longets - completes to longest commont
+" menuone - shows menu even with one item
+" noinsert - no insert word
+set completeopt=menuone
+
+" Words
+" <C-x><C-k>
+if filereadable("/usr/share/dict/words")
+    set dictionary+=/usr/share/dict/words
+endif
+
+" Copy vertically (pevious line)
+imap <silent> <C-y> <C-r><C-r>=copy#smart_yank()<CR>
 
 " Scrolling
 set scrolloff=10

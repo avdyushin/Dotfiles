@@ -7,12 +7,14 @@ cabbrev цй wq
 
 " -- INSERT --
 " Show next completion
-"inoremap <Tab> <C-r>=utils#smart_tab()<Enter>
+inoremap <Tab> <C-r>=tabs#smart_tab()<Enter>
 " Show previous completion
-"inoremap <S-Tab> <C-n>
+inoremap <S-Tab> <C-p>
+" Select by pressing <Enter>
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
 " Inverse tab
-inoremap <S-Tab> <C-d>
+"inoremap <S-Tab> <C-d>
 
 " Show completion on Ctrl + Space
 " In terminal <C-Space> gets interpreted as <C-@>

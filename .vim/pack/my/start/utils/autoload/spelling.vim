@@ -1,7 +1,6 @@
 if !has("spell")
     finish
 endif
-
 " Spelling
 " ]s - next misspelled word
 " [s - previous misspelled word
@@ -14,7 +13,7 @@ function! spelling#toggle()
     else
         setlocal nospell
     endif
-    call s:log()
+    echo s:message()
 endfunction
 
 function! spelling#set(...)
@@ -22,9 +21,9 @@ function! spelling#set(...)
     setlocal spelllang=
     " Same as execute 'setlocal spelllang+=' . join(a:000, ',')
     let &l:spelllang .= join(a:000, ',')
-    call s:log()
+    echo s:message()
 endfunction
 
-function! s:log()
-    echo 'Spelling ' . &spelllang . ' has been ' . (&spell == 1 ? 'enabled' : 'disabled')
+function! s:message()
+    return 'Spelling ' . &spelllang . ' has been ' . (&spell == 1 ? 'enabled' : 'disabled')
 endfunction

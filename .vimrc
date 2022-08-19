@@ -213,6 +213,9 @@ let &t_EI="\033[1 q" " end insert mode, blinking block
 " <C-x><C-o>
 set omnifunc=syntaxcomplete#Complete
 
+" File/path completion
+" <C-x><C-f>
+
 " Completion options
 " longets - completes to longest commont
 " menuone - shows menu even with one item
@@ -242,6 +245,23 @@ set hlsearch
 set ignorecase
 set smartcase
 
+
+function Spellline()
+    if &spell
+        return " " . toupper(&spelllang)
+    else
+        return ""
+    endif
+endfunction
+
+function Wrapline()
+    if &wrap
+        return " W"
+    else
+        return ""
+    endif
+endfunction
+
 " Status line
 set laststatus=2
 
@@ -256,6 +276,8 @@ set statusline+=%*
 " set statusline+=%2B
 set statusline+=%c/%L\ %p%%
 set statusline+=%*
+set statusline+=%{Wrapline()}
+set statusline+=%{Spellline()}
 set statusline+=%#User3#
 set statusline+=%{g:has_trailing_spaces}
 

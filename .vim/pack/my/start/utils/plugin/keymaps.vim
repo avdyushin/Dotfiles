@@ -73,7 +73,8 @@ nnoremap <Leader>ai mzgg=G`z
 "nnoremap <silent> <C-Left> b
 " Move one work forward
 "nnoremap <silent> <C-Right> w
-nnoremap <Tab> w
+" Do not remap <Tab> in order to have <C-i> working!
+"nnoremap <Tab> w
 " Move to the begging of line
 nnoremap <silent> <C-a> ^
 nnoremap B ^

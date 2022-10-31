@@ -200,5 +200,5 @@ function hex() {
 function file-hex-row() {
     local -r size=${1:?"Row size must be specified."}
     local -r file=${2:?"File must be specified."}
-    hexdump -v -e "$size/1 \" %02X\" \"\\n\"" $file
+    hexdump -v -e "\"%08.8_ax |\" $size/1 \" %02X\" \"\\n\"" $file
 }

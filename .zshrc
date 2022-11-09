@@ -64,6 +64,6 @@ precmd () {
   update_terminal_cwd()
 
   RPS1="$(insert-mode)"
-  PROMPT=$'$(base-prompt) $(git-prompt)\n ❯ '
+  PROMPT=$'$(base-prompt) $(git-prompt)\n %% '
 }
 

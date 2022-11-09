@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 symlink() {
     local source=$PWD/$1

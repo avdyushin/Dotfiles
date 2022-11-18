@@ -138,12 +138,17 @@ set fillchars=fold:—,vert:\|
 
 " Wrap mode helpers
 
+" Go to next/prev line using h and l
+set whichwrap+=<,>,h,l
+
 " Go to the next character visually below current one
 nnoremap <expr> j v:count ? 'j' : 'gj'
 " Go to the next character visually above current one
 nnoremap <expr> k v:count ? 'k' : 'gk'
 " Keymap to toggle wrapping
 nnoremap <Leader>w :call wrapping#toggle()<CR>
+" Simulate soft wrap at 80
+nnoremap <Leader>v :vnew \| wincmd p \| vertical res 80<CR>
 
 " Search for trailing whitespaces
 nnoremap <Leader>ws :/\s$<Enter>
@@ -244,7 +249,6 @@ set incsearch
 set hlsearch
 set ignorecase
 set smartcase
-
 
 function Spellline()
     if &spell

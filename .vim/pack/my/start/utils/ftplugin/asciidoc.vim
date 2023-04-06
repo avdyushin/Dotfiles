@@ -6,3 +6,9 @@ setlocal wrap
 setlocal linebreak
 " Show line breaks
 setlocal showbreak=↪\ 
+
+" Set vale compiler
+try
+    compiler vale
+catch /.*/
+endtry

@@ -28,6 +28,7 @@ setopt autocd
 
 setopt inc_append_history
 setopt share_history
+setopt histignorespace
 
 setopt correct
 

@@ -30,7 +30,7 @@ alias feature="git-create-branch feature"
 
 alias ungron="gron --ungron"
 alias grep="grep --color=always"
-alias gg="grep -rEIiR"
+alias gg="grep -rnEIiR"
 alias less="less -R"
 alias -g G="| grep"
 alias -g L="| less -R"

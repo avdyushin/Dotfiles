@@ -1,17 +1,21 @@
 # Vi mode
 bindkey -v
 
-bindkey -M vicmd v     edit-command-line
-bindkey -M vicmd '^I'  vi-forward-blank-word # <Tab>
-bindkey -M vicmd 'f' vi-forward-blank-word
-bindkey -M vicmd 'b' vi-backward-word
+# Command/Normal mode bindings
+bindkey -M vicmd v    edit-command-line
+bindkey -M vicmd '^i' vi-forward-blank-word # <Tab>
+bindkey -M vicmd '^f' vi-forward-blank-word
+bindkey -M vicmd '^b' vi-backward-word
 
-#bindkey -M viins '^ '  expand-ealias
-bindkey -M viins '^ '  _expand_alias
-bindkey -M viins ' '   magic-space
+# Insert mode bindings
+bindkey -M viins '^ ' _expand_alias
+bindkey -M viins ' '  magic-space
+bindkey -M viins '^f' vi-forward-blank-word
+bindkey -M viins '^b' vi-backward-word
 
+# Search mode
 bindkey -M isearch ' ' magic-space
 
 bindkey '^r' history-incremental-search-backward
-bindkey '^A' vi-beginning-of-line
-bindkey '^E' vi-end-of-line
+bindkey '^a' vi-beginning-of-line
+bindkey '^e' vi-end-of-line

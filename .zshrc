@@ -13,6 +13,7 @@ DIRSTACKSIZE=5
 setopt autopushd # call pushd on each directory change
 setopt pushdsilent # don't print directory history
 setopt pushdignoredups # ignore copies
+
 #setopt pushdminus # exchange + and -
 
 autoload -U colors && colors
@@ -29,6 +30,9 @@ setopt autocd
 setopt inc_append_history
 setopt share_history
 setopt histignorespace
+setopt hist_ignore_dups
+setopt hist_expire_dups_first
+setopt extended_history
 
 setopt correct
 

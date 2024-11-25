@@ -118,7 +118,7 @@ function base-prompt() {
     color_user="%F{4}\e[3m%n\e[0m%f"
     color_host="%F{3}%m%f"
     color_path="%F{2}%~%f"
-    echo $color_host $color_path
+    echo $color_user $color_path
 }
 
 function last-exit-code() {

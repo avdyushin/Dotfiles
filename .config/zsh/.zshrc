@@ -1,12 +1,15 @@
+export HISTFILE="$XDG_CACHE_HOME/.zsh_history"
+export HISTSIZE=1024
+export SAVEHIST=1024
+
 autoload -U compinit && compinit -u
 
-source $HOME/.zsh/.zfunctions
-source $HOME/.zsh/.zbindkey
-source $HOME/.zsh/.zenv
-source $HOME/.zsh/.zalias
+source $ZDOTDIR/.zfunctions
+source $ZDOTDIR/.zbindkey
+source $ZDOTDIR/.zalias
 
-if [ -f $HOME/.zshlocal ]; then
-    source $HOME/.zshlocal
+if [ -f $HOME/.zprofile ]; then
+    source $HOME/.zprofile
 fi
 
 DIRSTACKSIZE=5
@@ -75,4 +78,3 @@ precmd () {
   RPS1="$(insert-mode)"
   PROMPT=$'$(base-prompt) $(git-prompt)\n %% '
 }
-

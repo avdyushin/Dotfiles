@@ -1,6 +1,0 @@
-export KEYTIMEOUT=1
-export HISTSIZE=1000
-export SAVEHIST=1000
-export HISTFILE=$HOME/.zhistory
-export EDITORa="$(which vim)"
-export VISUAL="$(which vim)"

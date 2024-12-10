@@ -111,7 +111,7 @@ function git-upstream-status() {
 function git-prompt() {
     branch="$(git-branch)" || return
     color_branch="%F{240} ${branch}%f"
-    echo "${color_branch}%F{240}$(git-file-status)%f %F{236}$(git-upstream-status)%f"
+    echo "${color_branch}%F{240}$(git-file-status)%f %F{238}$(git-upstream-status)%f"
 }
 
 function base-prompt() {

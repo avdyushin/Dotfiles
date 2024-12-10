@@ -197,7 +197,7 @@ filetype plugin on
 filetype indent on
 
 " Set color scheme
-colorscheme ayu
+colorscheme nord
 
 " Set 256 colors
 set t_Co=256

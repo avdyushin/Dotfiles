@@ -61,8 +61,12 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:
 zstyle ':completion:*:*:kill:*:processes' command 'ps -e -o pid,user,args'
 zstyle ':completion:*:*:*:*:processes' list-colors "=(#b) #([0-9]#)*=0=${color[yellow]}"
 
-zstyle ':completion:*' completer _expand_alias _complete _ignored
+zstyle ':completion:*' completer _expand_alias _complete _ignored _extensions _approximate
 zstyle ':completion:*' regular true
+zstyle ':completion:*' menu select
+zstyle ':completion:*' file-list all
+zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
+zstyle ':completion:*:*:*:*:corrections' format '%F{yellow}!- %d (errors: %e) -!%f'
 
 precmd () {
   print -Pn "\e]2;%~\a"

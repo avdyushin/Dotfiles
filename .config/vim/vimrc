@@ -1,3 +1,9 @@
+set runtimepath^=$XDG_CONFIG_HOME/vim
+set runtimepath^=$XDG_CONFIG_HOME/vim/after
+
+set packpath^=$XDG_CONFIG_HOME/vim
+set packpath^=$XDG_CONFIG_HOME/vim/after
+
 " Set encoding
 scriptencoding utf-8
 
@@ -73,15 +79,15 @@ set ttimeoutlen=10
 " vim -R <file>, or view <file>
 set swapfile
 " Keep all swap files in one place
-set directory^=$HOME/.vim/tmp//
+set directory^=$XDG_CACHE_HOME/vim//
 " Create backup before writing and keep backup files (will be overwritten on future backups)
 set backup
 " Keep all backups in given place
-set backupdir^=$HOME/.vim/tmp//
+set backupdir^=$XDG_CACHE_HOME/vim//
 
 " Persistent undo across sessions
 set undofile
-set undodir^=$HOME/.vim/tmp//
+set undodir^=$XDG_CACHE_HOME/vim//
 " Undo points
 " By default undo reverts everything since entering insert mode
 inoremap <Enter> <Enter><C-g>u
@@ -101,7 +107,7 @@ set autowriteall
 " Automatic sessions
 " Will open last position when reopening files
 " Specify where session scripts are stored
-set viewdir=$HOME/.vim/tmp//
+set viewdir=$XDG_CACHE_HOME/vim//
 " This is important to have modeline work together with view sessions
 set viewoptions-=options
 set sessionoptions-=options

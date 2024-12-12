@@ -6,19 +6,29 @@ cabbrev ц w
 cabbrev цй wq
 
 " -- INSERT --
+" Quick return to the normal mode
+inoremap jk <Esc>
 " Show next completion
 inoremap <Tab> <C-r>=tabs#smart_tab()<Enter>
 " Show previous completion
 inoremap <S-Tab> <C-p>
 " Select by pressing <Enter>
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
-
+"
 " Inverse tab
 "inoremap <S-Tab> <C-d>
 
 " Show completion on Ctrl + Space
 " In terminal <C-Space> gets interpreted as <C-@>
 inoremap <C-@> <C-n>
+" Move to the begging of line
+inoremap <silent> <C-a> <C-o>^
+" Move to the end of line
+inoremap <silent> <C-e> <C-o>$
+" Move to the next word
+inoremap <silent> <C-f> <C-o>w
+" Move to the previous word
+inoremap <silent> <C-b> <C-o>b
 
 " Autocomplete tags
 "inoremap <lt>/ </<C-x><C-o><Esc>==gi
@@ -89,5 +99,5 @@ nnoremap <Leader>J :m .+1<Enter>==
 vnoremap <Leader>K :m '<-2<Enter>gv=gv
 " Move visually selected lines down
 vnoremap <Leader>J :m '>+1<Enter>gv=gv
-" Execure last command again
+" Execute last command again
 nnoremap <Leader>. :!!<Enter>

@@ -1,3 +1,4 @@
+.DS_Store
 *~
 .vim/tmp
 .vim/pack/my/start/utils/plugin/local.vim

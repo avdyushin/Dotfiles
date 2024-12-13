@@ -12,6 +12,8 @@ case `uname` in
         ;;
 esac
 
+alias rm="rm -i"
+alias mv="mv -i"
 alias bc="bc -lq"
 alias gs="git status"
 alias -g ND='*(/om[1])' # newest directory
@@ -28,6 +30,7 @@ alias bugfix="git-create-branch bugfix"
 alias hotfix="git-create-branch hotfix"
 alias feature="git-create-branch feature"
 
+alias irssi="irssi --home=$XDG_CONFIG_HOME/irssi/"
 alias ungron="gron --ungron"
 alias grep="grep --color=always"
 alias gg="grep -rnEIiR"

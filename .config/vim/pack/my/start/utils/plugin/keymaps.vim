@@ -5,9 +5,11 @@ cabbrev й q
 cabbrev ц w
 cabbrev цй wq
 
+" -- Operator-Pending Mappings --
+onoremap p i(
+onoremap b i[
+
 " -- INSERT --
-" Quick return to the normal mode
-inoremap jk <Esc>
 " Show next completion
 inoremap <Tab> <C-r>=tabs#smart_tab()<Enter>
 " Show previous completion
@@ -41,6 +43,9 @@ nnoremap <Right> :bn <Enter>
 nnoremap <Up>    :N <Enter>
 nnoremap <Down>  :n <Enter>
 
+" Go to indention or go to first column
+nnoremap <expr> <silent> 0 col('.') == match(getline('.'),'\S')+1 ? '0' : '^'
+
 " Search for string under cursor: * forward and # backward
 " /TERM to search
 " n - go to next result
@@ -53,9 +58,10 @@ nnoremap <Down>  :n <Enter>
 nnoremap n nzz
 nnoremap N Nzz
 " Clear search by clearing latest buffer
-nnoremap <Esc><Esc> :let @/ = ""<Enter>
+"nnoremap <Esc><Esc> :let @/ = ""<Enter>
 " Clear search by temporary disabling highlight, will re highlighted on reopen
 "nnoremap <Esc><Esc> :noh<Enter>
+nnoremap <C-l> :let @/=""<Enter><C-l>
 
 " Go to next split window
 nnoremap <S-Tab> <C-w>w

@@ -76,5 +76,8 @@ precmd () {
   update_terminal_cwd()
 
   RPS1="$(insert-mode)"
-  PROMPT=$'$(base-prompt) $(git-prompt)\n %(?.%%.%{$fg[red]%}%%)${reset_color} '
+  P1='%F{yellow}┌┄─%f'
+  P2='%F{yellow}└──┄┄%f'
+  ERR="%(?.$P2.%F{red}$P2)%f"
+  PROMPT=$'$P1 $(base-prompt) $(git-prompt) \n$ERR '
 }

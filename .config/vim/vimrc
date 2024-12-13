@@ -203,6 +203,9 @@ filetype plugin on
 filetype indent on
 
 " Set color scheme
+let g:nord_cursor_line_number_background = 1
+let g:nord_italic = 1
+let g:nord_italic_comments = 1
 colorscheme nord
 
 " Set 256 colors

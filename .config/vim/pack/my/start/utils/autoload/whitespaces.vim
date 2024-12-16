@@ -8,3 +8,6 @@ function! whitespaces#trailing_spaces()
         let g:has_trailing_spaces = ''
     endif
 endfunction
+
+" Strip on save
+autocmd BufWritePre * :%s/\s\+$//e

@@ -1,3 +1,4 @@
+" Set XDG config style
 set runtimepath^=$XDG_CONFIG_HOME/vim
 set runtimepath^=$XDG_CONFIG_HOME/vim/after
 
@@ -29,22 +30,6 @@ let mapleader = ","
 "
 "set backspace=indent,eol,start
 set backspace=eol
-" Delete characters with <BS>
-"nnoremap <BS> X
-" Move back by work with <BS>
-"nnoremap <Backspace> b
-nnoremap <Backspace> :call backspace#smart_backspace()<CR>
-nnoremap <S-Backspace> x
-
-" <Enter>/<CR> behaviour
-" Insert new line and return into normal mode
-nnoremap <CR> o<Esc>
-" Shift+Enter doesn't work in macOS Terminal out of the box
-" Break current line in current position
-" In GUI
-"nnoremap <S-CR> i<CR><Esc>
-" In terminal: ^M = Ctrl+V + Shift+Enter
-"nnoremap  i<CR><Esc>
 
 if has('clipboard')
     set clipboard=unnamed
@@ -88,16 +73,6 @@ set backupdir^=$XDG_CACHE_HOME/vim//
 " Persistent undo across sessions
 set undofile
 set undodir^=$XDG_CACHE_HOME/vim//
-" Undo points
-" By default undo reverts everything since entering insert mode
-inoremap <Enter> <Enter><C-g>u
-inoremap . .<C-g>u
-inoremap , ,<C-g>u
-inoremap ; ;<C-g>u
-inoremap ! !<C-g>u
-inoremap ? ?<C-g>u
-inoremap <C-w> <C-g>u<C-w>
-inoremap <C-u> <C-g>u<C-u>
 
 " Reload file on changes
 set autoread
@@ -147,18 +122,6 @@ set fillchars=fold:—,vert:\|
 " Go to next/prev line using h and l
 set whichwrap+=<,>,h,l
 
-" Go to the next character visually below current one
-nnoremap <expr> j v:count ? 'j' : 'gj'
-" Go to the next character visually above current one
-nnoremap <expr> k v:count ? 'k' : 'gk'
-" Keymap to toggle wrapping
-nnoremap <Leader>w :call wrapping#toggle()<CR>
-" Simulate soft wrap at 80
-nnoremap <Leader>v :vnew \| wincmd p \| vertical res 80<CR>
-
-" Search for trailing whitespaces
-nnoremap <Leader>ws :/\s$<Enter>
-
 if has("spell")
     " Spelling
     set nospell
@@ -202,14 +165,13 @@ endif
 filetype plugin on
 filetype indent on
 
-" Set color scheme
-let g:nord_cursor_line_number_background = 1
-let g:nord_italic = 1
-let g:nord_italic_comments = 1
-colorscheme nord
-
 " Set 256 colors
 set t_Co=256
+" Better color support for schemes
+if (has("termguicolors"))
+   set termguicolors
+endif
+
 " Setup italic in terminal
 " set t_ZH=[3m
 " set t_ZR=[23m
@@ -241,9 +203,6 @@ set completeopt=menuone
 if filereadable("/usr/share/dict/words")
     set dictionary+=/usr/share/dict/words
 endif
-
-" Copy vertically (pevious line)
-imap <silent> <C-y> <C-r><C-r>=copy#smart_yank()<CR>
 
 " Scrolling
 set scrolloff=10

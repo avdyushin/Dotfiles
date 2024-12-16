@@ -10,6 +10,9 @@ onoremap p i(
 onoremap b i[
 
 " -- INSERT --
+" Copy vertically (pevious line)
+imap <silent> <C-y> <C-r><C-r>=copy#smart_yank()<CR>
+
 " Show next completion
 inoremap <Tab> <C-r>=tabs#smart_tab()<Enter>
 " Show previous completion
@@ -32,11 +35,47 @@ inoremap <silent> <C-f> <C-o>w
 " Move to the previous word
 inoremap <silent> <C-b> <C-o>b
 
+" Undo points
+" By default undo reverts everything since entering insert mode
+inoremap <Enter> <Enter><C-g>u
+inoremap . .<C-g>u
+inoremap , ,<C-g>u
+inoremap ; ;<C-g>u
+inoremap ! !<C-g>u
+inoremap ? ?<C-g>u
+inoremap <C-w> <C-g>u<C-w>
+inoremap <C-u> <C-g>u<C-u>
+
 " Autocomplete tags
 "inoremap <lt>/ </<C-x><C-o><Esc>==gi
 
 " -- NORMAL --
+" Delete characters with <BS>
+"nnoremap <BS> X
+" Move back by work with <BS>
+"nnoremap <Backspace> b
+nnoremap <Backspace> :call backspace#smart_backspace()<CR>
+nnoremap <S-Backspace> x
+" <Enter>/<CR> behaviour
+" Insert new line and return into normal mode
+nnoremap <CR> o<Esc>
+" Shift+Enter doesn't work in macOS Terminal out of the box
+" Break current line in current position
+" In GUI
+"nnoremap <S-CR> i<CR><Esc>
+" In terminal: ^M = Ctrl+V + Shift+Enter
+"nnoremap  i<CR><Esc>
+" Go to the next character visually below current one
+nnoremap <expr> j v:count ? 'j' : 'gj'
+" Go to the next character visually above current one
+nnoremap <expr> k v:count ? 'k' : 'gk'
+" Keymap to toggle wrapping
+nnoremap <Leader>w :call wrapping#toggle()<CR>
+" Simulate soft wrap at 80
+nnoremap <Leader>v :vnew \| wincmd p \| vertical res 80<CR>
 
+" Search for trailing whitespaces
+nnoremap <Leader>ws :/\s$<Enter>
 "Hard way to use hjkl for movements
 nnoremap <Left>  :bp <Enter>
 nnoremap <Right> :bn <Enter>

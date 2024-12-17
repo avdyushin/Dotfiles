@@ -77,7 +77,7 @@ precmd () {
 
   RPS1="$(insert-mode)"
   P1='%F{yellow}┌┄─%f'
-  P2='%F{yellow}└──┄┄%f'
-  ERR="%(?.$P2.%F{red}$P2)%f"
+  P2='└──┄┄%f'
+  ERR="%(?.%F{yellow}$P2.%F{red}$P2)%f"
   PROMPT=$'$P1 $(base-prompt) $(git-prompt) \n$ERR '
 }

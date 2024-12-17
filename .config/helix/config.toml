@@ -1,0 +1,23 @@
+theme = "nord"
+
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+newline = "none"
+
+[keys.insert]    
+C-a = [ "goto_line_start" ]
+C-e = [ "goto_line_end" ]
+
+[keys.normal]
+
+x = "delete_selection"
+0 = "goto_line_start"
+"$" = "goto_line_end"
+
+V = ["select_mode", "extend_to_line_bounds"]
+
+C-a = [ "goto_line_start" ]
+C-e = [ "goto_line_end" ]
+C-j = [ "move_visual_line_down", "goto_next_paragraph", "trim_selections" ]
+C-k = [ "move_visual_line_up", "goto_prev_paragraph", "trim_selections" ]

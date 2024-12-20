@@ -24,7 +24,17 @@ autoload -U colors && colors
 autoload -U edit-command-line
 zle -N edit-command-line
 
-#zle -N expand-ealias
+# Version control details
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git svn
+# allow check for changes
+zstyle ':vcs_info:*' check-for-changes true
+#sets unstaged string to this
+zstyle ':vcs_info:git:*' unstagedstr "!"
+#sets staged string to this
+zstyle ':vcs_info:git:*' stagedstr "+"
+#sets format
+zstyle ':vcs_info:git:*' formats ' %b %m%u%k%c'
 
 setopt prompt_subst
 
@@ -71,13 +81,21 @@ zstyle ':completion:*' file-list all
 zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
 zstyle ':completion:*:*:*:*:corrections' format '%F{yellow}!- %d (errors: %e) -!%f'
 
-precmd () {
-  print -Pn "\e]2;%~\a"
-  update_terminal_cwd()
+precmd() {
+  #print -Pn "\e]2;%~\a"
+  #update_terminal_cwd()
 
-  RPS1="$(insert-mode)"
   P1='%F{yellow}┌┄─%f'
   P2='└──┄┄%f'
   ERR="%(?.%F{yellow}$P2.%F{red}$P2)%f"
-  PROMPT=$'$P1 $(base-prompt) $(git-prompt) \n$ERR '
+
+  RPS1="$(insert-mode)"
+
+  vcs_info
+  if [[ -n ${vcs_info_msg_0_} ]]; then
+      GIT="%F{8}${vcs_info_msg_0_}%f"
+      PS1=$'$P1 $(base-prompt) $GIT \n$ERR '
+  else
+      PS1=$'$P1 $(base-prompt) \n$ERR '
+  fi
 }

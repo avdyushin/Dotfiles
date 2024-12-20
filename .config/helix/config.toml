@@ -5,12 +5,13 @@ space = "all"
 tab = "all"
 newline = "none"
 
-[keys.insert]    
+[keys.insert]
 C-a = [ "goto_line_start" ]
 C-e = [ "goto_line_end" ]
 
 [keys.normal]
-
+"{" = ["goto_prev_paragraph", "collapse_selection"]
+"}" = ["goto_next_paragraph", "collapse_selection"]
 x = "delete_selection"
 0 = "goto_line_start"
 "$" = "goto_line_end"
@@ -21,3 +22,6 @@ C-a = [ "goto_line_start" ]
 C-e = [ "goto_line_end" ]
 C-j = [ "move_visual_line_down", "goto_next_paragraph", "trim_selections" ]
 C-k = [ "move_visual_line_up", "goto_prev_paragraph", "trim_selections" ]
+
+[keys.normal.d]
+d = ["extend_to_line_bounds", "yank_main_selection_to_clipboard", "delete_selection"]

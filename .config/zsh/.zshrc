@@ -81,11 +81,18 @@ zstyle ':completion:*' file-list all
 zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
 zstyle ':completion:*:*:*:*:corrections' format '%F{yellow}!- %d (errors: %e) -!%f'
 
+function base-prompt() {
+    prefix='%F{yellow}┌┄─%f'
+    color_user="%F{blue}\e[3m%n\e[0m%f"
+    color_host="%F{yellow}%m%f"
+    color_path="%F{green}%~%f"
+    echo $prefix $color_user $color_path
+}
+
 precmd() {
   #print -Pn "\e]2;%~\a"
   #update_terminal_cwd()
 
-  P1='%F{yellow}┌┄─%f'
   P2='└──┄┄%f'
   ERR="%(?.%F{yellow}$P2.%F{red}$P2)%f"
 
@@ -93,9 +100,9 @@ precmd() {
 
   vcs_info
   if [[ -n ${vcs_info_msg_0_} ]]; then
-      GIT="%F{8}${vcs_info_msg_0_}%f"
-      PS1=$'$P1 $(base-prompt) $GIT \n$ERR '
+      GIT="%F{magenta}${vcs_info_msg_0_}%f"
+      PS1=$'$(base-prompt) $GIT \n$ERR '
   else
-      PS1=$'$P1 $(base-prompt) \n$ERR '
+      PS1=$'$(base-prompt) \n$ERR '
   fi
 }

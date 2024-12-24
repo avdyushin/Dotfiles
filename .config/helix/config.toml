@@ -5,6 +5,9 @@ space = "all"
 tab = "all"
 newline = "none"
 
+[keys.normal.space]
+c = ":sh kitty @ send-text --match 'num:1' cargo run -- Cargo.toml \\\\n"
+
 [keys.insert]
 C-a = [ "goto_line_start" ]
 C-e = [ "goto_line_end" ]
@@ -18,6 +21,9 @@ x = "delete_selection"
 
 V = ["select_mode", "extend_to_line_bounds"]
 
+p = ["paste_clipboard_after", "collapse_selection"]
+P = ["paste_clipboard_before", "collapse_selection"]
+
 C-a = [ "goto_line_start" ]
 C-e = [ "goto_line_end" ]
 C-j = [ "move_visual_line_down", "goto_next_paragraph", "trim_selections" ]
@@ -25,3 +31,6 @@ C-k = [ "move_visual_line_up", "goto_prev_paragraph", "trim_selections" ]
 
 [keys.normal.d]
 d = ["extend_to_line_bounds", "yank_main_selection_to_clipboard", "delete_selection"]
+
+[keys.normal.y]
+y = ["extend_to_line_bounds", "yank_main_selection_to_clipboard", "normal_mode", "collapse_selection"]

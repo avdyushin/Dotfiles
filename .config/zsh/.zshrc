@@ -90,8 +90,7 @@ function base-prompt() {
 }
 
 precmd() {
-  #print -Pn "\e]2;%~\a"
-  #update_terminal_cwd()
+  print -Pn "\e]2;%~\a"
 
   P2='└──┄┄%f'
   ERR="%(?.%F{yellow}$P2.%F{red}$P2)%f"

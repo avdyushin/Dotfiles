@@ -7,6 +7,9 @@ augroup USER
     "autocmd InsertEnter * :set norelativenumber
     "autocmd InsertLeave * :set relativenumber
 
+    " Reload configuration on .vimrc save
+    autocmd BufWritePost .vimrc,_vimrc,vimrc source $MYVIMRC
+
     " Update trailing space warnings
     autocmd BufEnter,BufWritePost,CursorHold * call whitespaces#trailing_spaces()
     " Update git branch name

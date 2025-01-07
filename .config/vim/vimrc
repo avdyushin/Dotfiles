@@ -1,4 +1,3 @@
-" Set XDG config style
 set runtimepath^=$XDG_CONFIG_HOME/vim
 set runtimepath^=$XDG_CONFIG_HOME/vim/after
 
@@ -93,9 +92,6 @@ set splitbelow
 " vsp <filename> will open in right view
 set splitright
 
-" Reload configuration on .vimrc save
-"au! BufWritePost $MYVIMRC source %
-
 " To replace all tabs to spaces in the opened file, just run:
 " :%retab
 " Indents will have a width of 2
@@ -167,9 +163,11 @@ filetype indent on
 
 " Set 256 colors
 set t_Co=256
-" Better color support for schemes
 if (has("termguicolors"))
-   set termguicolors
+    " Fix broken colors on macOS Terminal app
+    if $TERM_PROGRAM != "Apple_Terminal"
+        set termguicolors
+    endif
 endif
 
 " Setup italic in terminal
@@ -220,7 +218,7 @@ set smartcase
 
 function Spellline()
     if &spell
-        return " " . toupper(&spelllang)
+        return " " . toupper(&spelllang) . " "
     else
         return ""
     endif
@@ -228,7 +226,15 @@ endfunction
 
 function Wrapline()
     if &wrap
-        return " W"
+        return " ↵ "
+    else
+        return ""
+    endif
+endfunction
+
+function Modified()
+    if &modified
+        return "*"
     else
         return ""
     endif
@@ -238,20 +244,15 @@ endfunction
 set laststatus=2
 
 set statusline=
-set statusline+=%f%m
-set statusline+=\ %#User2#
-set statusline+=%{g:git_file_status}
-set statusline+=\ %=
-set statusline+=%#User1#
-set statusline+=%{g:git_branch_name}
-set statusline+=%*
-" set statusline+=%2B
-set statusline+=%c/%L\ %p%%
+set statusline+=%f
+set statusline+=%{Modified()}
+set statusline+=%=
+set statusline+=%{&filetype}\ \|
+set statusline+=\ %*
+set statusline+=%l:%c/%L\ %p%%
 set statusline+=%*
 set statusline+=%{Wrapline()}
 set statusline+=%{Spellline()}
-set statusline+=%#User3#
-set statusline+=%{g:has_trailing_spaces}
 
 " Find path
 set path=.,**
@@ -265,3 +266,7 @@ set wildmode=longest:full,full
 set wildignorecase
 set wildchar=<Tab>
 set wildcharm=<Tab>
+
+" Custom commands
+:command W w
+:command Q q

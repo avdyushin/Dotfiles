@@ -1,4 +1,5 @@
 set runtimepath^=$XDG_CONFIG_HOME/vim
+
 set runtimepath^=$XDG_CONFIG_HOME/vim/after
 
 set packpath^=$XDG_CONFIG_HOME/vim
@@ -6,7 +7,6 @@ set packpath^=$XDG_CONFIG_HOME/vim/after
 
 " Set encoding
 scriptencoding utf-8
-
 set encoding=utf-8
 " Disable mode lines for security reasons
 set nomodeline
@@ -191,7 +191,7 @@ set omnifunc=syntaxcomplete#Complete
 " <C-x><C-f>
 
 " Completion options
-" longets - completes to longest commont
+" longest - completes to longest common
 " menuone - shows menu even with one item
 " noinsert - no insert word
 set completeopt=menuone
@@ -247,8 +247,8 @@ set statusline=
 set statusline+=%f
 set statusline+=%{Modified()}
 set statusline+=%=
-set statusline+=%{&filetype}\ \|
-set statusline+=\ %*
+set statusline+=%{&filetype}
+set statusline+=\ \|\ %*
 set statusline+=%l:%c/%L\ %p%%
 set statusline+=%*
 set statusline+=%{Wrapline()}
@@ -256,7 +256,6 @@ set statusline+=%{Spellline()}
 
 " Find path
 set path=.,**
-
 " Menus, cycle through using <Tab> and <S-Tab>
 " Allow <Left> and <Right> to navigate through the completion lists
 set wildmenu
@@ -270,3 +269,6 @@ set wildcharm=<Tab>
 " Custom commands
 :command W w
 :command Q q
+
+" Popup border
+let g:borderchars = ['─', '│', '─', '│', '┌', '┐', '┘', '└']

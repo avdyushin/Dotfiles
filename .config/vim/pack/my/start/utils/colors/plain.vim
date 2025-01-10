@@ -20,6 +20,9 @@ endif
 
 let g:colors_name='plain'
 
+let g:plain_spell_underline = get(g:, "plain_spell_underline", "underline")
+let s:spell_underline = g:plain_spell_underline
+
 let s:black           = { "gui": "#222222", "cterm": "0"   }
 let s:medium_gray     = { "gui": "#767676", "cterm": "243" }
 let s:white           = { "gui": "#F1F1F1", "cterm": "15"  }
@@ -57,7 +60,7 @@ if &background == "dark"
   let s:visual           = s:lighter_black
   let s:cursor_line      = s:subtle_black
   let s:constant         = s:light_blue
-  let s:comment          = s:light_gray
+  let s:comment          = s:medium_gray
   let s:selection        = s:dark_yellow
   let s:selection_fg     = s:black
   let s:ok               = s:light_green
@@ -78,7 +81,7 @@ else
   let s:visual           = s:light_blue
   let s:cursor_line      = s:lightest_gray
   let s:constant         = s:dark_blue
-  let s:comment          = s:light_gray
+  let s:comment          = s:medium_gray
   let s:selection        = s:light_yellow
   let s:selection_fg     = s:light_black
   let s:ok               = s:light_green
@@ -147,7 +150,7 @@ hi! link Macro            PreProc
 hi! link PreCondit        PreProc
 
 " __Operator__
-call s:h("Noise",         {"fg": s:norm_subtle, "gui": "NONE"})
+call s:h("Noise",         {"fg": s:norm_very_subtle, "gui": "NONE"})
 hi! link Operator         Noise
 hi! link LineNr           Noise
 hi! link CursorLineNr     LineNr
@@ -155,7 +158,7 @@ hi! link FoldColumn       LineNr
 hi! link SignColumn       LineNr
 
 " __Comment__
-call s:h("Comment",       {"fg": s:comment, "gui": "italic"})
+call s:h("Comment",       {"fg": s:comment, "gui": "italic", "cterm": "italic"})
 
 " __Constant__
 call s:h("Constant",      {"fg": s:constant})
@@ -212,15 +215,15 @@ call s:h("DiffChange",    {"fg": s:yellow})
 call s:h("DiffText",      {"fg": s:constant})
 
 if has("gui_running")
-  call s:h("SpellBad",    {"gui": "underline", "sp": s:red})
-  call s:h("SpellCap",    {"gui": "underline", "sp": s:ok})
-  call s:h("SpellRare",   {"gui": "underline", "sp": s:error})
-  call s:h("SpellLocal",  {"gui": "underline", "sp": s:ok})
+  call s:h("SpellBad",    {"gui": s:spell_underline, "sp": s:red})
+  call s:h("SpellCap",    {"gui": s:spell_underline, "sp": s:ok})
+  call s:h("SpellRare",   {"gui": s:spell_underline, "sp": s:error})
+  call s:h("SpellLocal",  {"gui": s:spell_underline, "sp": s:ok})
 else
-  call s:h("SpellBad",    {"cterm": "underline", "fg": s:red})
-  call s:h("SpellCap",    {"cterm": "underline", "fg": s:ok})
-  call s:h("SpellRare",   {"cterm": "underline", "fg": s:error})
-  call s:h("SpellLocal",  {"cterm": "underline", "fg": s:ok})
+  call s:h("SpellBad",    {"cterm": s:spell_underline, "fg": s:red})
+  call s:h("SpellCap",    {"cterm": s:spell_underline, "fg": s:ok})
+  call s:h("SpellRare",   {"cterm": s:spell_underline, "fg": s:error})
+  call s:h("SpellLocal",  {"cterm": s:spell_underline, "fg": s:ok})
 endif
 
 hi! link helpHyperTextEntry Title

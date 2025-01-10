@@ -1,3 +1,31 @@
+" Git log
+let s:git_log_popup = 0
+function! git#log_range(mode) range
+    if a:mode
+        let line_start = line(".")
+        let line_end = line_start
+    else
+        let line_start = line("'<")
+        let line_end = line("'>")
+    end
+    let path = shellescape(expand("%:p:h"))
+    let range = line_start .. "," .. line_end
+    let file = shellescape(resolve(expand("%:t")))
+    let cmd = "git -C " .. path .. " log --no-merges -n 1 -L ".. range .. ":" .. file
+    echo cmd
+    let content = systemlist(cmd)
+    call popup_close(s:git_log_popup)
+    let s:git_log_popup = popup_atcursor(content, #{
+                \ title: ' Git Log in ' .. range . ' ',
+                \ pos: 'botleft',
+                \ border: [],
+                \ borderchars: g:borderchars,
+                \ padding: [0,1,0,1],
+                \ wrap: 0
+                \ })
+    call setbufvar(winbufnr(s:git_log_popup), "&filetype", "git")
+endfunction
+
 " Git branch name
 let g:git_branch_name = ''
 function! git#branch_name()

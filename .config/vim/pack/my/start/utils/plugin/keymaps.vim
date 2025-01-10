@@ -109,7 +109,7 @@ nnoremap <S-Tab> <C-w>w
 " Edit .vimrc in a right split view
 nnoremap <Leader>ev :botright vsplit $MYVIMRC<Enter>
 " Edit .zshrc in a right split view
-nnoremap <Leader>ez :botright vsplit $HOME/.zshrc<Enter>
+nnoremap <Leader>ez :botright vsplit $ZDOTDIR/.zshrc<Enter>
 " Reload .vimrc in current buffer
 nnoremap <Leader>sv :source $MYVIMRC<Enter> \| :echom expand("$MYVIMRC") "has been reloaded"<Enter>
 " Save and make
@@ -146,3 +146,10 @@ vnoremap <Leader>K :m '<-2<Enter>gv=gv
 vnoremap <Leader>J :m '>+1<Enter>gv=gv
 " Execute last command again
 nnoremap <Leader>. :!!<Enter>
+
+" Git log
+nmap <silent><Leader>g :call git#log_range(1)<CR>
+vnoremap <silent><Leader>g :<C-u>call git#log_range(0)<CR>
+
+" Syntax element id info popup
+nmap <silent> <Leader>i :call syntax#inspect()<CR>

@@ -35,7 +35,7 @@ let s:lightest_gray   = { "gui": "#E5E5E5", "cterm": "251" }
 let s:dark_red        = { "gui": "#C30771", "cterm": "1"   }
 let s:light_red       = { "gui": "#E32791", "cterm": "1"   }
 let s:dark_blue       = { "gui": "#008EC4", "cterm": "4"   }
-let s:light_blue      = { "gui": "#B6D6FD", "cterm": "153" }
+let s:light_blue      = { "gui": "#89AABB", "cterm": "153" }
 let s:dark_cyan       = { "gui": "#20A5BA", "cterm": "6"   }
 let s:light_cyan      = { "gui": "#4FB8CC", "cterm": "14"  }
 let s:dark_green      = { "gui": "#10A778", "cterm": "2"   }
@@ -52,6 +52,7 @@ if &background == "dark"
   let s:norm             = s:lighter_gray
   let s:norm_subtle      = s:light_gray
   let s:norm_very_subtle = s:medium_gray
+  let s:whitespace       = s:light_black
   let s:purple           = s:light_purple
   let s:cyan             = s:light_cyan
   let s:green            = s:light_green
@@ -60,7 +61,8 @@ if &background == "dark"
   let s:visual           = s:lighter_black
   let s:cursor_line      = s:subtle_black
   let s:constant         = s:light_blue
-  let s:comment          = s:medium_gray
+  let s:comment          = s:lighter_black
+  let s:number           = s:light_green
   let s:selection        = s:dark_yellow
   let s:selection_fg     = s:black
   let s:ok               = s:light_green
@@ -73,6 +75,7 @@ else
   let s:norm             = s:light_black
   let s:norm_subtle      = s:lighter_black
   let s:norm_very_subtle = s:medium_gray
+  let s:whitespace       = s:lighter_black
   let s:purple           = s:dark_purple
   let s:cyan             = s:dark_cyan
   let s:green            = s:dark_green
@@ -82,6 +85,7 @@ else
   let s:cursor_line      = s:lightest_gray
   let s:constant         = s:dark_blue
   let s:comment          = s:medium_gray
+  let s:number           = s:dark_green
   let s:selection        = s:light_yellow
   let s:selection_fg     = s:light_black
   let s:ok               = s:light_green
@@ -137,10 +141,10 @@ hi! link Type             Normal
 hi! link StorageClass     Type
 hi! link Structure        Type
 hi! link Typedef          Type
-hi! link Special          Normal
+"hi! link Special          Normal
 hi! link SpecialChar      Special
 hi! link Tag              Special
-hi! link Delimiter        Special
+hi! link Delimiter        Comment
 hi! link SpecialComment   Special
 hi! link Debug            Special
 hi! link VertSplit        Normal
@@ -149,8 +153,10 @@ hi! link Define           PreProc
 hi! link Macro            PreProc
 hi! link PreCondit        PreProc
 
+call s:h("Special",       {"fg": s:purple, "gui": "NONE"})
+
 " __Operator__
-call s:h("Noise",         {"fg": s:norm_very_subtle, "gui": "NONE"})
+call s:h("Noise",         {"fg": s:comment, "gui": "NONE"})
 hi! link Operator         Noise
 hi! link LineNr           Noise
 hi! link CursorLineNr     LineNr
@@ -163,12 +169,13 @@ call s:h("Comment",       {"fg": s:comment, "gui": "italic", "cterm": "italic"})
 " __Constant__
 call s:h("Constant",      {"fg": s:constant})
 hi! link Character        Constant
-hi! link Number           Constant
-hi! link Boolean          Constant
-hi! link Float            Constant
 hi! link String           Constant
 hi! link Directory        Constant
 hi! link Title            Constant
+
+call s:h("Number",        {"fg": s:number})
+hi! link Boolean          Number
+hi! link Float            Number
 
 " __Statement__
 call s:h("Statement",     {"fg": s:norm, "gui": "bold"})
@@ -190,7 +197,7 @@ call s:h("MoreMsg",       {"fg": s:norm_subtle, "cterm": "bold", "gui": "bold"})
 hi! link ModeMsg          MoreMsg
 
 " __NonText__
-call s:h("NonText",       {"fg": s:norm_very_subtle})
+call s:h("NonText",       {"fg": s:whitespace})
 hi! link Folded           NonText
 hi! link qfLineNr         NonText
 
@@ -257,7 +264,7 @@ call s:h("CursorLine",    {"bg": s:cursor_line})
 call s:h("ColorColumn",   {"bg": s:cursor_line})
 
 " __MatchParen__
-call s:h("MatchParen",    {"bg": s:bg_subtle, "fg": s:norm})
+call s:h("MatchParen",    {"bg": s:bg, "fg": s:red})
 
 hi! link htmlH1 Normal
 hi! link htmlH2 Normal
@@ -315,3 +322,10 @@ hi link ALEInfoSign InfoMsg
 
 hi link sqlStatement Statement
 hi link sqlKeyword Keyword
+
+hi link vimSetEqual Number
+hi link vimEnvVar Constant
+
+hi link zshDeref Constant
+hi link zshSubstDelim Delimiter
+hi link zshOperator Operator

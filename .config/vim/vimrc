@@ -73,6 +73,9 @@ set backupdir^=$XDG_CACHE_HOME/vim//
 set undofile
 set undodir^=$XDG_CACHE_HOME/vim//
 
+" Viminfo
+set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
+
 " Reload file on changes
 set autoread
 " Write file before :make (and other commands or quit)
@@ -110,7 +113,7 @@ set smarttab
 " Show tabs, trail and non-break spaces
 set list
 
-set listchars=tab:—-,trail:·,precedes:⇇,extends:⇉,nbsp:␣,eol:¬
+set listchars=tab:-⇥,trail:·,precedes:⇇,extends:⇉,nbsp:␣,eol:¬
 set fillchars=fold:—,vert:\|
 
 " Wrap mode helpers
@@ -248,10 +251,10 @@ set statusline+=%f
 set statusline+=%{Modified()}
 set statusline+=%=
 set statusline+=%{&filetype}
-set statusline+=\ \|\ %*
-set statusline+=%l:%c/%L\ %p%%
+"set statusline+=\ \|\ %*
+set statusline+=\ %l:%c/%L\ %p%%
 set statusline+=%*
-set statusline+=%{Wrapline()}
+"set statusline+=%{Wrapline()}
 set statusline+=%{Spellline()}
 
 " Find path

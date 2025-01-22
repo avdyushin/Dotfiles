@@ -5,6 +5,9 @@ tmp
 .netrwhist
 .ghc/ghci_history
 .config/.android/
+.config/github-copilot/
+.config/fish/conf.d/local.fish
+.config/kitty/local.conf
 .config/vim/pack/my/start/utils/plugin/local.vim
 .config/zsh/.zsh_history
 .config/zsh/.zsh_sessions

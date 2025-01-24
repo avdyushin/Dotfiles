@@ -121,10 +121,12 @@ set fillchars=fold:—,vert:\|
 " Go to next/prev line using h and l
 set whichwrap+=<,>,h,l
 
+" Spelling
+" Use <C-x> s in insert mode to show completion for the misspelled word
 if has("spell")
-    " Spelling
     set nospell
     set spellfile=./user.utf-8.add
+    set spellsuggest+=10
 
     " Spelling menu
     menu Spelling.Toggle  :call spelling#toggle()<CR>
@@ -203,6 +205,8 @@ set completeopt=menuone
 " <C-x><C-k>
 if filereadable("/usr/share/dict/words")
     set dictionary+=/usr/share/dict/words
+    " Enable completion via <C-n> only
+    set complete+=k
 endif
 
 " Scrolling

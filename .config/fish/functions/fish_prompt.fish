@@ -29,6 +29,8 @@ function fish_prompt --description 'Write out the prompt'
     set -l statusb_color (set_color $bold_flag $fish_color_status)
     set -l prompt_status " "(__fish_print_pipestatus "[" "]" "|" "$status_color" "$statusb_color" $last_pipestatus)
 
-    echo -s $prefix " " (prompt_login)' ' (set_color $color_cwd) (prompt_pwd) $normal (fish_vcs_prompt)
+    set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
+
+    echo -s $prefix " " (prompt_login)' ' (set_color $color_cwd) (prompt_pwd) $normal " " (virtualenv_info) (fish_vcs_prompt)
     echo -n -s $suffix "" $normal "" $prompt_status " "
 end

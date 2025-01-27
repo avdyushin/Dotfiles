@@ -44,6 +44,6 @@ function s:set_inspect_info()
 endfunction
 
 augroup inspect
-    au!
-    au CursorMoved * call <SID>set_inspect_info()
+    " au!
+    " au CursorMoved * call <SID>set_inspect_info()
 augroup END

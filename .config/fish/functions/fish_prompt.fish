@@ -31,6 +31,6 @@ function fish_prompt --description 'Write out the prompt'
 
     set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
 
-    echo -s $prefix " " (prompt_login)' ' (set_color $color_cwd) (prompt_pwd) $normal " " (virtualenv_info) (fish_vcs_prompt)
+    echo -s $prefix " " (prompt_login)' ' (set_color $color_cwd) (prompt_pwd) $normal (virtualenv_info) (fish_vcs_prompt)
     echo -n -s $suffix "" $normal "" $prompt_status " "
 end

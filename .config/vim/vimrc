@@ -46,7 +46,7 @@ set showcmd
 " Show mode (insert, visual) in last line
 set showmode
 " Show paired braces
-set showmatch
+set showmatch matchtime=15
 " Timeout for mapping delays
 set timeoutlen=1000
 " Timeout for key code delays

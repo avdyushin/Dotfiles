@@ -37,8 +37,8 @@ endif
 " Show line numbers
 " To hide line numbers use command: set nonumber / set nonu
 set number
-" Select with mouse
-"set mouse+=a
+" Select and scroll with mouse
+set mouse+=a
 " Show line and column numbers
 " set ruler
 " Show entered command in last line

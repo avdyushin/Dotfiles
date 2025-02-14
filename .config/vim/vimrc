@@ -63,19 +63,34 @@ set ttimeoutlen=10
 " vim -R <file>, or view <file>
 set swapfile
 " Keep all swap files in one place
-set directory^=$XDG_CACHE_HOME/vim//
+if has('nvim')
+    set directory^=$XDG_CACHE_HOME/nvim//
+else
+    set directory^=$XDG_CACHE_HOME/vim//
+endif
 " Create backup before writing and keep backup files (will be overwritten on future backups)
 set backup
 " Keep all backups in given place
-set backupdir^=$XDG_CACHE_HOME/vim//
+if has('nvim')
+    set backupdir^=$XDG_CACHE_HOME/nvim//
+else
+    set backupdir^=$XDG_CACHE_HOME/vim//
+endif
 
 " Persistent undo across sessions
 set undofile
-set undodir^=$XDG_CACHE_HOME/vim//
+if has('nvim')
+    set undodir^=$XDG_CACHE_HOME/nvim//
+else
+    set undodir^=$XDG_CACHE_HOME/vim//
+endif
 
 " Viminfo
-set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
-
+if has('nvim')
+    set viminfo+=n$XDG_CACHE_HOME/nvim/viminfo
+else
+    set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
+endif
 " Reload file on changes
 set autoread
 " Write file before :make (and other commands or quit)
@@ -84,7 +99,11 @@ set autowriteall
 " Automatic sessions
 " Will open last position when reopening files
 " Specify where session scripts are stored
-set viewdir=$XDG_CACHE_HOME/vim//
+if has('nvim')
+    set viewdir=$XDG_CACHE_HOME/nvim//
+else
+    set viewdir=$XDG_CACHE_HOME/vim//
+endif
 " This is important to have modeline work together with view sessions
 set viewoptions-=options
 set sessionoptions-=options
@@ -279,3 +298,7 @@ set wildcharm=<Tab>
 
 " Popup border
 let g:borderchars = ['─', '│', '─', '│', '┌', '┐', '┘', '└']
+
+if has('nvim')
+    source $XDG_CONFIG_HOME/nvim/init.lua
+endif

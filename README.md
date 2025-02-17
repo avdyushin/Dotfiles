@@ -10,35 +10,36 @@ Run to update: `rake`
 Main idea from this post:
 [Synchronizing Dotfiles](http://benscheirman.com/2013/12/synchronizing-dotfiles/)
 
-## Vim shortcuts
+### Local configuration examples
 
-See [Vim.md](Vim.md) for details
+Setup brew, disable sessions, can set cargo path for zsh in `.config/zsh/.zlocal`
 
-## Screenshots
+```
+export SHELL_SESSIONS_DISABLE=1
+eval "$(/opt/homebrew/bin/brew shellenv)"
+source "$HOME/.cargo/env"
+```
 
-### Zsh in Terminal
+The same but for fish in `.config/fish/conf.d/local.fish`
 
-How prompt and colors looks like.
+```
+eval "$(/opt/homebrew/bin/brew shellenv)"
+fish_add_path $HOME/.cargo/bin/
+```
 
-<img src="screenshots/zsh.png" width="1024"/>
+Setup fish shell for Kitty in `.config/kitty/local.conf`
 
-OS X Terminal theme is [Argonaut](https://github.com/pwaleczek/Argonaut-theme)
+```
+shell /opt/homebrew/bin/fish
+env SHELL=/opt/homebrew/bin/fish
+```
 
-### Vim in Terminal
+### Kitty icon
 
-Using Ayu2 theme:
-
-<img src="screenshots/vim.png" width="1024"/>
-
-### MacVim
-
-Using Ayu2 theme:
-<img src="screenshots/macvim.png" width="1024"/>
+```
+kitty +runpy 'from kitty.fast_data_types import cocoa_set_app_icon; import sys; cocoa_set_app_icon(*sys.argv[1:]); print("Noice!")' .config/kitty/dark.icns /Applications/kitty.app
+```
 
 ## Font
 
-I use nice [Input](http://input.fontbureau.com) font.
-
-## Links
-
-Ayu2 color theme for Xcode is here [XcodeThemes](https://github.com/avdyushin/XcodeThemes).
+[Iosevka](https://github.com/be5invis/Iosevka)

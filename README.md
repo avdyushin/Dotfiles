@@ -1,14 +1,11 @@
 # Dotfiles
 
 Keep dot files updated on different machines.
-This repository contains main configuration for `zsh` and `vim` for great productivity.
+This repository contains main configuration for shell and `vim` for great productivity.
 
 ## Installation
 
-Run to update: `rake`
-
-Main idea from this post:
-[Synchronizing Dotfiles](http://benscheirman.com/2013/12/synchronizing-dotfiles/)
+Run to update `sh install.sh`
 
 ### Local configuration examples
 
@@ -38,6 +35,7 @@ env SHELL=/opt/homebrew/bin/fish
 
 ```
 kitty +runpy 'from kitty.fast_data_types import cocoa_set_app_icon; import sys; cocoa_set_app_icon(*sys.argv[1:]); print("Noice!")' .config/kitty/dark.icns /Applications/kitty.app
+rm /var/folders/*/*/*/com.apple.dock.iconcache; killall Dock
 ```
 
 ## Font

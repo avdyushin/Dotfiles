@@ -8,7 +8,10 @@ tmp
 .config/github-copilot/
 .config/fish/conf.d/local.fish
 .config/kitty/local.conf
+.config/nvim/lazy-lock.json
+.config/nvim/lazyvim.json
 .config/vim/pack/my/start/utils/plugin/local.vim
+.config/wireshark/
 .config/zsh/.zsh_history
 .config/zsh/.zsh_sessions
 .config/zsh/.zcompdump

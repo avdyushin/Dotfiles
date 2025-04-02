@@ -14,6 +14,7 @@ tmp
 .config/vim/pack/my/start/utils/plugin/local.vim
 .config/wireshark/
 .config/zed/prompts/
+.config/zed/conversations/
 .config/zsh/.zsh_history
 .config/zsh/.zsh_sessions
 .config/zsh/.zcompdump

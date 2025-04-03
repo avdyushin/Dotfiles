@@ -1,1 +1,2 @@
 source ~/.config/vim/vimrc
+source ~/.config/vim/pack/my/start/utils/plugin/keymaps.vim

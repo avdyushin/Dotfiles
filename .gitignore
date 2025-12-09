@@ -8,6 +8,7 @@ tmp
 .config/github-copilot/
 .config/fish/conf.d/local.fish
 .config/fish/fish_variables
+.config/fish/completions/
 .config/kitty/local.conf
 .config/nvim/lazy-lock.json
 .config/nvim/lazyvim.json

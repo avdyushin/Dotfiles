@@ -20,3 +20,5 @@ tmp
 .config/zsh/.zsh_sessions
 .config/zsh/.zcompdump
 .config/zsh/.zprofile
+.config/cliamp/
+.config/swiftpm

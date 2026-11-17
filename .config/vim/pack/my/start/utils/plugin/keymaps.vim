@@ -14,9 +14,9 @@ onoremap b i[
 imap <silent> <C-y> <C-r><C-r>=copy#smart_yank()<CR>
 
 " Show next completion
-inoremap <Tab> <C-r>=tabs#smart_tab()<Enter>
+" inoremap <Tab> <C-r>=tabs#smart_tab()<Enter>
 " Show previous completion
-inoremap <S-Tab> <C-p>
+" inoremap <S-Tab> <C-p>
 " Select by pressing <Enter>
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 "

@@ -7,8 +7,17 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "languages": {
+    "Rust": {
+      "preferred_line_length": 120
+    }
+  },
+  "git_panel": {
+    "tree_view": true
+  },
   "show_edit_predictions": false,
   "project_panel": {
+    "hide_hidden": false,
     "auto_fold_dirs": false
   },
   "drag_and_drop_selection": {
@@ -35,16 +44,19 @@
   "vertical_scroll_margin": 5.0,
   "scroll_beyond_last_line": "vertical_scroll_margin",
   "terminal": {
-    "font_size": 16.0,
+    "font_family": "Iosevka Term",
+    "font_weight": 450.0,
+    "font_size": 14.0,
     "shell": {
       "program": "fish"
     }
   },
   "ui_font_weight": 400.0,
   "ui_font_family": ".ZedSans",
+  "buffer_font_family": "Iosevka",
   "buffer_line_height": "comfortable",
   "buffer_font_weight": 400.0,
-  "icon_theme": "Zed (Default)",
+  "icon_theme": "Catppuccin Latte",
   "auto_update": false,
   "minimap": {
     "show": "never"
@@ -84,12 +96,11 @@
   "autosave": "on_focus_change",
   "format_on_save": "off",
   "vim_mode": true,
-  "buffer_font_family": "Iosevka SS08",
   "ui_font_size": 16.0,
   "buffer_font_size": 19.0,
   "theme": {
     "mode": "light",
-    "light": "PaperColor Light",
+    "light": "Catppuccin Latte",
     "dark": "Ayu Mirage"
   },
   "profiles": {

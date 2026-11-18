@@ -56,7 +56,7 @@
   "buffer_font_family": "Iosevka",
   "buffer_line_height": "comfortable",
   "buffer_font_weight": 400.0,
-  "icon_theme": "Catppuccin Latte",
+  "icon_theme": "Zed (Default)",
   "auto_update": false,
   "minimap": {
     "show": "never"
@@ -99,7 +99,7 @@
   "ui_font_size": 16.0,
   "buffer_font_size": 19.0,
   "theme": {
-    "mode": "light",
+    "mode": "dark",
     "light": "Catppuccin Latte",
     "dark": "Ayu Mirage"
   },
